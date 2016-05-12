@@ -1,0 +1,847 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font than Computer Modern for most use cases
+    \usepackage{palatino}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{0010-srt-pilot}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{0010-SRT-pilot}\label{srt-pilot}
+
+This experiment was conducted by Kathryn Schuler in collaboration with
+Elissa Newport (advisor), Darlene Howard, \& Jim Howard. The lab manager
+at the time of running was Katherine Olson and the research assistant
+who collected the data was Jason Sotomayor. The data was collected at
+Georgetown University from October 23, 2012 to November 15, 2012.
+
+This is a simple serial reaction time tast (SRT) in which participants
+see a screen with 4 circles. When a circle fills, they must touch the
+corresponding keyboard button (z, x, n, m) as quickly and accurately as
+possible. We measure their accuracy and reaction time over 20 blocks of
+80 trials. Faster reaction times reveal learning.
+
+    \begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{Introduction}{Introduction}
+\item
+  \protect\hyperlink{Materials-and-method}{Materials and method}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{Subjects}{Subjects}
+  \item
+    \protect\hyperlink{Materials}{Materials}
+  \item
+    \protect\hyperlink{Procedure}{Procedure}
+  \end{itemize}
+\item
+  \protect\hyperlink{Results-and-analysis}{Results and analysis}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{Setting-up}{Setting up}
+  \item
+    \protect\hyperlink{Data-cleaning}{Data cleaning}
+  \item
+    \protect\hyperlink{Accuracy}{Accuracy}
+  \item
+    \protect\hyperlink{Reaction-time}{Reaction Time}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{Raw-RT}{Raw RT}
+    \item
+      \protect\hyperlink{Normalized-RT}{Normalized RT}
+    \end{itemize}
+  \end{itemize}
+\item
+  \protect\hyperlink{Conclusions-ux5cux26-next-steps}{Conclusions \&
+  next steps}
+\item
+  \protect\hyperlink{Important-files}{Important files}
+\end{itemize}
+
+    \subsection{Introduction}\label{introduction}
+
+0010-SRT-pilot was the first experiment Lissa and I ever conducted at
+Georgetown. We wanted to see if we could replicate the Howard's SRT task
+in our own lab. We began with this simple regular serial reaction time
+task (SRT), where every transition in the pattern was 100\% predictable
+(i.e.~a series of 8 button presses repeated over and over again).
+
+    \subsection{Materials and method}\label{materials-and-method}
+
+\subsubsection{Subjects}\label{subjects}
+
+\begin{itemize}
+\tightlist
+\item
+  20 GU undergrads (2 excluded for not finishing)
+\item
+  Conducted in the Newport Lab
+\item
+  Compensated \$10
+\end{itemize}
+
+    \subsubsection{Materials}\label{materials}
+
+\begin{itemize}
+\tightlist
+\item
+  Hardware: Mac-mini, keyboard
+\item
+  Software: PsychoPy, Python
+\item
+  4 circles aligned horizontally across the screen each of which
+  corresponds to 4 keyboard buttons {[}z,x,n,m{]}
+\item
+  Each participant assigned to a series of 8 button presses that would
+  repeat over and over (SRT)
+\end{itemize}
+
+    \subsubsection{Procedure}\label{procedure}
+
+\begin{itemize}
+\tightlist
+\item
+  Circles fill green according to the serial pattern the participant was
+  assigned to
+\item
+  Participants must press the keyboard button that corresponds to the
+  illuminated circle.
+\item
+  They are instructed to work as quickly and as accurately as possible.
+\item
+  Every 80 trials (1 block) subjects are given a 60 second break. They
+  complete 20 blocks.
+\end{itemize}
+
+    \subsection{Results and analysis}\label{results-and-analysis}
+
+Data analysis was conducted with R. In this (and all) SRT experiments,
+we perform three main analyses. - Accuracy: Does participant accuracy
+change as a function of time? - Raw RT: Does raw reaction time change as
+a function of time? - Normalized RT: We z-transform as a way of
+normalizing RT data and analyze zRT as a function of time.
+
+    \subsubsection{Setting up}\label{setting-up}
+
+We begin by loading the required packages and setting up some figure
+parameters
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} load the R libraries we need}
+        \PY{k+kn}{library}\PY{p}{(}ggplot2\PY{p}{)}
+        \PY{k+kn}{library}\PY{p}{(}doBy\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} adjust figure output size}
+        \PY{k+kp}{options}\PY{p}{(}repr.plot.width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+        \PY{k+kp}{options}\PY{p}{(}repr.plot.height \PY{o}{=} \PY{l+m}{3}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} define paths}
+        FIGPATH \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{/Users/kathrynschuler/Documents/research\PYZhy{}gu/figures/0010\PYZhy{}srt\PYZhy{}pilot\PYZhy{}figs/\PYZsq{}}
+\end{Verbatim}
+
+    \subsubsection{Data cleaning}\label{data-cleaning}
+
+Before we compute accuracy and reaction time, we need to clean our data
+a little bit. With reaction time data, there isn't really a standard
+procedure that everybody uses for eliminating outliers. Some people use
+2SD away from the mean; some people make a cutoff threshold (e.g.
+\textless{}1000ms) and remove any trials beyond it; some people
+normalize and then remove; etc. In addition, the Howards like to remove
+participants who have accuracy levels below 80\%, which is typically an
+indicator that they did not understand the task (or were not ``doing
+their best'')
+
+We will adopt this strategy here: - inspect the data visually to
+determine a reasonable cutoff criteria (usually 1000ms) - the goal here
+is remove extreme values. - remove participants below 80\% (to be
+consistent with the Howards)
+
+\paragraph{Outlier elimination}\label{outlier-elimination}
+
+Visually inspect the data and cutoff values beyond 1000ms if reasonable.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} load data}
+        orig.data \PY{o}{=} read.csv\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{processed\PYZhy{}data/0010\PYZhy{}srt\PYZhy{}pilot\PYZhy{}processed\PYZhy{}data.csv\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} convert seconds to ms}
+        orig.data\PY{o}{\PYZdl{}}RT \PY{o}{=} orig.data\PY{o}{\PYZdl{}}RT\PY{o}{*}\PY{l+m}{1000}
+        
+        \PY{c+c1}{\PYZsh{} boxplot to inspect for outliers}
+        ggplot\PY{p}{(}orig.data\PY{p}{,} aes\PY{p}{(}x\PY{o}{=}sid\PY{p}{,} y\PY{o}{=}RT\PY{p}{)}\PY{p}{)} \PY{o}{+} geom\PYZus{}boxplot\PY{p}{(}outlier.size \PY{o}{=} \PY{l+m}{1.5}\PY{p}{)} \PY{o}{+} theme\PYZus{}classic\PY{p}{(}base\PYZus{}size\PY{o}{=}\PY{l+m}{10}\PY{p}{)} \PY{o}{+} 
+            xlab\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{subject\PYZsq{}}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{RT (ms)\PYZsq{}}\PY{p}{)} \PY{o}{+} ggtitle\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Distribution of reaction times by subject\PYZsq{}}\PY{p}{)} \PY{o}{+} 
+            theme\PY{p}{(}axis.text.x\PY{o}{=}element\PYZus{}text\PY{p}{(}angle\PY{o}{=}\PY{l+m}{90}\PY{p}{,}hjust\PY{o}{=}\PY{l+m}{1}\PY{p}{,}vjust\PY{o}{=}\PY{l+m}{0.5}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} save figure locally}
+        ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}distribution\PYZhy{}rt\PYZhy{}by\PYZhy{}subject.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can see by looking at the data that there aren't any extremely
+ridiculous outliers. In my opion, it actually makes more sense to leave
+these outliers in, rather than selecting some arbitrary cutoff criteria.
+Later we are going to take the median RT, anyway, which is pretty
+resiliant to outliers. These few outling points are hardly going to make
+a difference. However, just to be consistent across studies, we will
+remove trials with RTs exceeding 1000ms.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} remove trials with RT greater than or equal to 1000ms}
+        data.rm.extrmRT \PY{o}{=} \PY{k+kp}{subset}\PY{p}{(}orig.data\PY{p}{,} RT \PY{o}{\PYZlt{}=} \PY{l+m}{1000}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} figure out how much data was lost}
+        n.outliers \PY{o}{=} \PY{k+kp}{nrow}\PY{p}{(}orig.data\PY{p}{)} \PY{o}{\PYZhy{}} \PY{k+kp}{nrow}\PY{p}{(}data.rm.extrmRT\PY{p}{)}
+        data.loss \PY{o}{=} n.outliers\PY{o}{/}\PY{k+kp}{nrow}\PY{p}{(}orig.data\PY{p}{)} \PY{o}{*} \PY{l+m}{100} 
+        \PY{k+kp}{cat}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Number of outliers: \PYZdq{}}\PY{p}{,} n.outliers\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{  Data loss: \PYZdq{}}\PY{p}{,} data.loss\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZpc{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of outliers:  24   Data loss:  0.075 \%
+    \end{Verbatim}
+
+    \paragraph{Remove participants with accuracy below
+80\%}\label{remove-participants-with-accuracy-below-80}
+
+Next we will remove participants with overall accuracy below 80\%.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} make function to compute percent correct (pcntc)}
+        pcnt.correct \PY{o}{=} \PY{k+kr}{function} \PY{p}{(}x\PY{p}{)} \PY{k+kr}{return} \PY{p}{(}\PY{k+kp}{sum}\PY{p}{(}x\PY{p}{)}\PY{o}{/}\PY{k+kp}{length}\PY{p}{(}x\PY{p}{)}\PY{o}{*}\PY{l+m}{100}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} get the overall accuracy for each subject and inspect}
+        overall.acc \PY{o}{=} summaryBy\PY{p}{(}isCorrect \PY{o}{\PYZti{}} sid\PY{p}{,} data \PY{o}{=} data.rm.extrmRT\PY{p}{,} FUN \PY{o}{=} pcnt.correct\PY{p}{)}
+        overall.acc
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}4}]:}
+    
+    \begin{tabular}{r|ll}
+  & sid & isCorrect.pcnt.correct\\
+\hline
+    1 & S04 & 86.8125\\
+    2 & S05 & 96.93367\\
+    3 & S06 & 92.8125\\
+    4 & S07 & 92.86162\\
+    5 & S08 & 86.05378\\
+    6 & S09 & 96.4375\\
+    7 & S10 & 87.75\\
+    8 & S11 & 86.125\\
+    9 & S12 & 97.0625\\
+    10 & S13 & 85.1875\\
+    11 & S14 & 90.58971\\
+    12 & S15 & 92.0625\\
+    13 & S16 & 93.6875\\
+    14 & S17 & 64.35272\\
+    15 & S18 & 93.9185\\
+    16 & S19 & 92.875\\
+    17 & S20 & 86.8125\\
+    18 & S21 & 91.1875\\
+    19 & S22 & 91.3588\\
+    20 & S23 & 94.55229\\
+\end{tabular}
+
+    
+
+    We can see that only one subject (S17) has overall accuracy below 80\%.
+Let's remove that participant to complete our data cleaning.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} remove subjects below 80\PYZpc{}}
+        data.rm.lowAcc \PY{o}{=} \PY{k+kp}{subset}\PY{p}{(}data.rm.extrmRT\PY{p}{,} sid \PY{o}{!=} \PY{l+s}{\PYZdq{}}\PY{l+s}{S17\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Check how much data was lost}
+        n.outliers \PY{o}{=} \PY{k+kp}{nrow}\PY{p}{(}data.rm.extrmRT\PY{p}{)} \PY{o}{\PYZhy{}} \PY{k+kp}{nrow}\PY{p}{(}data.rm.lowAcc\PY{p}{)}
+        data.loss \PY{o}{=} n.outliers\PY{o}{/}\PY{k+kp}{nrow}\PY{p}{(}data.rm.extrmRT\PY{p}{)} \PY{o}{*} \PY{l+m}{100} 
+        \PY{k+kp}{cat}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Number of outliers: \PYZdq{}}\PY{p}{,} n.outliers\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{  Data loss: \PYZdq{}}\PY{p}{,} data.loss\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZpc{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of outliers:  1599   Data loss:  5.000625 \%
+    \end{Verbatim}
+
+    We see that this results in a bit more data loss (quite a bit in my
+opinion). It is still a reasonable number, but I don't love it. We could
+probably have left this person in without effecting our overall results
+at all. Going forward, a better way of handling this is probably adding
+accuracy as predictor in our model (instead of excluding people based on
+accuracy criteria).
+
+\subsubsection{Accuracy}\label{accuracy}
+
+Now we can compute mean accuracy by block for the remaining 19 subjects.
+Note that the graph below is presenting values between 88 and 98\%. This
+is to help demonstrate some nuanced differences in accuracy across
+blocks (especially between blocks 1 and 2). It is important to keep in
+mind that, in general, participants maintain extremely high accuracy
+across all blocks.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} compute each subject\PYZsq{}s \PYZpc{} correct by block}
+        acc.sid.block \PY{o}{=} summaryBy\PY{p}{(}isCorrect \PY{o}{\PYZti{}} sid\PY{o}{*}block\PY{p}{,} data \PY{o}{=} data.rm.lowAcc\PY{p}{,} FUN \PY{o}{=} pcnt.correct \PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} plot mean \PYZpc{} correct by block}
+        ggplot\PY{p}{(}acc.sid.block\PY{p}{,} aes\PY{p}{(}\PY{k+kp}{factor}\PY{p}{(}block\PY{p}{)}\PY{p}{,} isCorrect.pcnt.correct\PY{p}{)}\PY{p}{)} \PY{o}{+}
+            stat\PYZus{}summary\PY{p}{(}fun.data \PY{o}{=} mean\PYZus{}se\PY{p}{,} size \PY{o}{=} \PY{l+m}{0.5}\PY{p}{,} geom\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{pointrange\PYZdq{}}\PY{p}{,} position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{dodge\PYZdq{}}\PY{p}{)} \PY{o}{+}
+            theme\PYZus{}classic\PY{p}{(}\PY{l+m}{10}\PY{p}{)} \PY{o}{+} theme\PY{p}{(}legend.position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{bottom\PYZdq{}}\PY{p}{)} \PY{o}{+}
+            xlab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{block\PYZdq{}}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZpc{} correct\PYZdq{}}\PY{p}{)} \PY{o}{+} ggtitle\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Percentage of correct trials by block\PYZdq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} save figure locally}
+        ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}accuracy\PYZhy{}by\PYZhy{}block.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_18_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Reaction time}\label{reaction-time}
+
+Next we will analyze the reaction time data for our remaining 19
+subjects. To do so, we need to first do a bit more data cleaning (Howard
+\& Howard, 1997)
+
+\paragraph{Remove incorrect trials}\label{remove-incorrect-trials}
+
+We need to remove any trials that were incorrect. Although these might
+be informative in some way, they are impossible to interpret. (Did the
+subject make a mistake completely irrelevant to our manipulation? or did
+the subject make a mistake that tells us what he/she was predicting to
+happen, even though it wasn't exactly right?) For now, we will remove
+them.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} used the previously cleaned data set and additionally remove incorrect trials}
+        data.rm.incorrect \PY{o}{=} \PY{k+kp}{subset}\PY{p}{(}data.rm.lowAcc\PY{p}{,} isCorrect \PY{o}{==} \PY{l+m}{1}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Check how much data was lost }
+        n.outliers \PY{o}{=} \PY{k+kp}{nrow}\PY{p}{(}data.rm.lowAcc\PY{p}{)} \PY{o}{\PYZhy{}} \PY{k+kp}{nrow}\PY{p}{(}data.rm.incorrect\PY{p}{)}
+        data.loss \PY{o}{=} n.outliers\PY{o}{/}\PY{k+kp}{nrow}\PY{p}{(}data.rm.lowAcc\PY{p}{)} \PY{o}{*} \PY{l+m}{100} 
+        \PY{k+kp}{cat}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Number of outliers: \PYZdq{}}\PY{p}{,} n.outliers\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{  Data loss: \PYZdq{}}\PY{p}{,} data.loss\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZpc{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of outliers:  2637   Data loss:  8.68091 \%
+    \end{Verbatim}
+
+    \paragraph{Raw RT}\label{raw-rt}
+
+    With the cleaned data set, we calcuate median RT for each participant
+for each block and then take the mean of those median RTs (Howard \&
+Howard, 1997) .
+
+\subparagraph{Median RT by subject by
+block}\label{median-rt-by-subject-by-block}
+
+We can plot the median RT for each participant for each block, which
+gives us each participants learning curve.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} individual subject data for mean of median RT}
+        medianRT.block \PY{o}{=} summaryBy\PY{p}{(}RT \PY{o}{\PYZti{}} sid\PY{o}{*}block\PY{p}{,} data \PY{o}{=} data.rm.incorrect\PY{p}{,} FUN \PY{o}{=} median\PY{p}{,} var.name \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{block\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} plot median RT by subject}
+        ggplot\PY{p}{(}medianRT.block\PY{p}{,} aes\PY{p}{(}block\PY{p}{,} block.median\PY{p}{,} ymax \PY{o}{=} \PY{k+kp}{max}\PY{p}{(}block.median\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{+} 
+               geom\PYZus{}point\PY{p}{(}stat\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{identity\PYZdq{}}\PY{p}{,} position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{dodge\PYZdq{}}\PY{p}{,} size \PY{o}{=} \PY{l+m}{1}\PY{p}{)} \PY{o}{+}
+               facet\PYZus{}wrap\PY{p}{(}\PY{o}{\PYZti{}}sid\PY{p}{)} \PY{o}{+} theme\PYZus{}classic\PY{p}{(}base\PYZus{}size\PY{o}{=}\PY{l+m}{8}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{median RT (ms)\PYZdq{}}\PY{p}{)} \PY{o}{+}
+               ggtitle\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Median reaction time by block for individual subjects\PYZdq{}}\PY{p}{)}
+        
+        ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}median\PYZhy{}RT\PYZhy{}by\PYZhy{}subject\PYZhy{}raw.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    This looks great - we can see that each participant has a different
+learning curve, but the overall pattern is the similar (they get faster
+over time). However, it also demonstrates the utility of normalizing the
+RTs. The Howard \& Howard analysis method takes the mean of these median
+reaction time to give the final data used for analysis. Normalizing the
+RTs might help this situation. (However, going forward we might want to
+use a mixed-effect model)
+
+\subparagraph{Mean of median RT}\label{mean-of-median-rt}
+
+Now we can compute the mean of median reaction times by block to show
+the group learning effects.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} plot the mean of median RT}
+        ggplot\PY{p}{(}medianRT.block\PY{p}{,} aes\PY{p}{(}\PY{k+kp}{factor}\PY{p}{(}block\PY{p}{)}\PY{p}{,} block.median\PY{p}{)}\PY{p}{)} \PY{o}{+} 
+            stat\PYZus{}summary\PY{p}{(}fun.data\PY{o}{=}mean\PYZus{}se\PY{p}{,} size \PY{o}{=} \PY{l+m}{0.5}\PY{p}{,} geom\PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{pointrange\PYZdq{}}\PY{p}{,} position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{dodge\PYZdq{}}\PY{p}{)} \PY{o}{+}
+            theme\PYZus{}classic\PY{p}{(}base\PYZus{}size\PY{o}{=}\PY{l+m}{10}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{median RT (ms)\PYZdq{}}\PY{p}{)} \PY{o}{+} xlab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{block\PYZdq{}}\PY{p}{)} \PY{o}{+}
+            ggtitle\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Mean of median reaction time by block\PYZdq{}}\PY{p}{)}
+        
+        ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}mean\PYZhy{}of\PYZhy{}median\PYZhy{}RT\PYZhy{}raw.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_25_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Normalized RT}\label{normalized-rt}
+
+The most popular options for normalizing RT data in the literature are
+proportional transformations and z-score transformations. Z-score
+transforms are preferred (by us and other labs), because proportional
+transforms are not as good at controlling for differences in processing
+speed (age-related or otherwise). This is because proportional
+transformations assume that the function relating processing speed
+between two groups is linear, with an intercept of zero, which is not
+always valid (e.g.~Chris, et al, 2001; Faust, Balota, Speiler, \&
+Ferrar, 1999).
+
+\subparagraph{Compute median modified
+z-score}\label{compute-median-modified-z-score}
+
+To compute z-score, we follow what has been suggested previously
+(e.g.~Praat, Abrams, \& Chasteen, 1997), with modifications for
+computing z-scores based on median and median absolute deviations
+(rather than mean and standard deviation):
+
+\begin{itemize}
+\tightlist
+\item
+  For each participant, we computed an overall median RT and median
+  absoulte deviation (MAD)
+\item
+  Then, we subtracted this overall median RT from the participant's
+  median RT for each block.
+\item
+  We multiplied this result by the constant 0.6745, as recommended by
+  Iglewicz \& Hoaglin (1993) for z-scored medians.
+\item
+  Then we divided this value by the participant's overall median
+  absolute deviation (MAD) (again, as Iglewicz \& Hoaglin suggest).
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} compute overall median RT and MAD from correct trials}
+         medianRT.overall \PY{o}{=} summaryBy\PY{p}{(}RT \PY{o}{\PYZti{}} sid\PY{p}{,} data \PY{o}{=} data.rm.incorrect\PY{p}{,} FUN \PY{o}{=} \PY{k+kt}{list}\PY{p}{(}median\PY{p}{,} mad\PY{p}{)}\PY{p}{,} var.name \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{overall\PYZdq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} subtract overall median RT from block median RT by participant}
+         z.data \PY{o}{=} \PY{k+kp}{merge}\PY{p}{(}medianRT.block\PY{p}{,} medianRT.overall\PY{p}{,} by \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{sid\PYZsq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} compute median modified z\PYZhy{}score}
+         z.data\PY{o}{\PYZdl{}}z.RT \PY{o}{=} \PY{p}{(}\PY{l+m}{0.6745}\PY{o}{*}\PY{p}{(}z.data\PY{o}{\PYZdl{}}block.median \PY{o}{\PYZhy{}} z.data\PY{o}{\PYZdl{}}overall.median\PY{p}{)}\PY{p}{)}\PY{o}{/}z.data\PY{o}{\PYZdl{}}overall.mad
+\end{Verbatim}
+
+    \subparagraph{Median RT by subject by
+block}\label{median-rt-by-subject-by-block}
+
+Now we can once again plot by block for each individual, this time with
+the normalized RT.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} plot median RT by subject}
+         ggplot\PY{p}{(}z.data\PY{p}{,} aes\PY{p}{(}block\PY{p}{,} z.RT\PY{p}{,} ymax \PY{o}{=} \PY{k+kp}{max}\PY{p}{(}z.RT\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{+} 
+                geom\PYZus{}point\PY{p}{(}stat\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{identity\PYZdq{}}\PY{p}{,} position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{dodge\PYZdq{}}\PY{p}{,} size \PY{o}{=} \PY{l+m}{1}\PY{p}{)} \PY{o}{+}
+                facet\PYZus{}wrap\PY{p}{(}\PY{o}{\PYZti{}}sid\PY{p}{)} \PY{o}{+} theme\PYZus{}classic\PY{p}{(}base\PYZus{}size\PY{o}{=}\PY{l+m}{8}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{median RT (ms)\PYZdq{}}\PY{p}{)} \PY{o}{+}
+                ggtitle\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Median z\PYZhy{}score RT by block for individual subjects\PYZdq{}}\PY{p}{)}
+         
+         ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}median\PYZhy{}RT\PYZhy{}by\PYZhy{}subject\PYZhy{}zscore.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subparagraph{Mean of median RT}\label{mean-of-median-rt}
+
+Now we can compute the mean of these z transformed median reaction times
+by block to show the group learning effects.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} plot the mean of z RT}
+         ggplot\PY{p}{(}z.data\PY{p}{,} aes\PY{p}{(}\PY{k+kp}{factor}\PY{p}{(}block\PY{p}{)}\PY{p}{,} z.RT\PY{p}{)}\PY{p}{)} \PY{o}{+} 
+             stat\PYZus{}summary\PY{p}{(}fun.data\PY{o}{=}mean\PYZus{}se\PY{p}{,} size \PY{o}{=} \PY{l+m}{0.5}\PY{p}{,} geom\PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{pointrange\PYZdq{}}\PY{p}{,} position \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{dodge\PYZdq{}}\PY{p}{)} \PY{o}{+}
+             theme\PYZus{}classic\PY{p}{(}base\PYZus{}size\PY{o}{=}\PY{l+m}{10}\PY{p}{)} \PY{o}{+} ylab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{median RT (ms)\PYZdq{}}\PY{p}{)} \PY{o}{+} xlab\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{block\PYZdq{}}\PY{p}{)}\PY{o}{+}
+             ggtitle\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Mean of median z\PYZhy{}score RT by block\PYZdq{}}\PY{p}{)}
+         
+         ggsave\PY{p}{(}\PY{k+kp}{paste}\PY{p}{(}FIGPATH\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{0010\PYZhy{}mean\PYZhy{}of\PYZhy{}median\PYZhy{}RT\PYZhy{}zscore.png\PYZsq{}}\PY{p}{)}\PY{p}{,} height \PY{o}{=} \PY{l+m}{3}\PY{p}{,} width \PY{o}{=} \PY{l+m}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{0010-srt-pilot_files/0010-srt-pilot_31_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Conclusions \& next steps}\label{conclusions-next-steps}
+
+\subsubsection{People can learn this (at different
+rates)}\label{people-can-learn-this-at-different-rates}
+
+Now let's take a look at the overal median and mad for each partipant,
+just to inspect things a little bit. We can see in the table below that
+the overal medians are widely variable for each participant. Some of the
+overall median values are in fact extremely fast. S06 has an overall
+median of 65.51 ms, for example, well below the phisiologically possible
+RT to a visual stimulus (typcially 100ms in humans). What does this
+mean? First, RTs below 100ms typically indiate \textbf{anticipatory}
+reaction times. The fact that S06 (and others) had anticipatory reaction
+times as their overall reaction time tells us that they learned
+extremely fast. This makes a lot of sense when you think about how
+simple the actual task was (the same exact 4 button sequence repeated
+over and over for 1600 trials). Participants who have much longer
+overall reaction times also tend to have much larger median absoulte
+deviations, meaning that their reaction times are significantly changing
+over blocks - suggesting they take longer to learn.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} medianRT.overall
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}13}]:}
+    
+    \begin{tabular}{r|lll}
+  & sid & overall.median & overall.mad\\
+\hline
+    1 & S04 & 310.425 & 122.0699\\
+    2 & S05 & 130.6129 & 151.455\\
+    3 & S06 & 65.51409 & 36.51619\\
+    4 & S07 & 347.1861 & 101.7151\\
+    5 & S08 & 310.7045 & 59.96071\\
+    6 & S09 & 96.84992 & 95.24962\\
+    7 & S10 & 249.3415 & 151.5691\\
+    8 & S11 & 140.3856 & 134.3798\\
+    9 & S12 & 289.1371 & 107.0647\\
+    10 & S13 & 116.6918 & 117.7952\\
+    11 & S14 & 194.275 & 166.4071\\
+    12 & S15 & 225.4119 & 126.8231\\
+    13 & S16 & 125.905 & 108.1498\\
+    14 & S18 & 233.3505 & 180.7778\\
+    15 & S19 & 195.573 & 128.078\\
+    16 & S20 & 159.2212 & 183.447\\
+    17 & S21 & 86.25197 & 63.32477\\
+    18 & S22 & 202.0819 & 206.8629\\
+    19 & S23 & 143.8015 & 126.1024\\
+\end{tabular}
+
+    
+
+    \subsubsection{Next steps}\label{next-steps}
+
+We acheived our original goal of replicating an SRT paradigm. We know
+that Katie's paradigm is working, and we can move on to replicating the
+alternating serial reaction time task. (aSRT task)
+
+    \subsection{Important files}\label{important-files}
+
+Files can be found on Katie's local computer at the path described, or
+you can access it on dropbox by clicking the link. All local paths are
+relative to \texttt{/Users/kathrynschuler/Documents/research-gu/}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{}{Summary}: \texttt{summaries/0010-srt-pilot.pdf}
+\item
+  \href{https://www.dropbox.com/sh/zfs3kwopxgktvff/AAA665qHEAr6Rp4DEB4nMH9ga?dl=0}{Stimuli}:
+  \texttt{stimuli/0010-str-pilot-stims/}
+\item
+  \href{https://www.dropbox.com/sh/3zrqr371ldw5gu0/AAAjxrHccjPTZ-Re_0dZD-SGa?dl=0}{Experiment}:
+  \texttt{experiment-code/0010-srt-pilot-exp/}
+\item
+  \href{https://www.dropbox.com/s/lak50vpz35yx5he/0010-SRT-pilot-track.csv?dl=0}{Subject
+  tracking}: \texttt{subject-tracking/0010-srt-pilot-track.csv}
+\item
+  \href{https://www.dropbox.com/sh/m1ixi64n28j4k8t/AADeh5hFw25EvvfVMtOxZhwRa?dl=0}{Raw
+  data}: \texttt{raw-data/0010-srt-pilot-data}
+\item
+  \href{https://www.dropbox.com/sh/8m5td0y7w39ox6j/AACp3fAxtvg9v1_WyPpNe7MCa?dl=0}{Analysis}:
+  \texttt{analyses/0010-srt-pilot-analysis/}
+\item
+  \href{https://www.dropbox.com/sh/ex3ma6g4u124bi7/AACZct7dUlb4hfPqruhaoa1oa?dl=0}{Figures}:
+  \texttt{figures/0010-srt-pilot-figs/}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
