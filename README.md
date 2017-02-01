@@ -1,5 +1,5 @@
 # Lab Notebook of Kathryn Schuler
 
-This repository contains summaries of all of the experiments Katie has run in the form of iPython or R notebooks.  For detials on how katie runs her experiments, visit her experiment guide.  
+This repository contains summaries of all of the experiments I have run.  I keep a single summary file in the form of an iPython or R notebook for each experiment.  Visit my experiment wiki for details on how I run experiments.
 
 
