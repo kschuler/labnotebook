@@ -19,15 +19,17 @@
 - [Time-course of adjacent and non-adjacent dependency learning](wordseg/adj-v-nonadj.md) - Schuler, Aslin, & Newport
 - [Time-course of learning in patients with aphasia](wordseg/patients.md) - Schuler, Fama, Turkeltaub & Newport
 
-### Formation of productive rules
+## Acquisition of rules and variation experiments
+###### Acquisition of morphological rules
 
 - [Refining the empirical yang paradigm]() - Schuler, Yang & Newport
 - [Children compared with adults]() - Schuler, Yang & Newport
 - [Adults under cognitive load]() - Schuler, Yang & Newport
 
-### Acquisition of linguistic variation
+###### Acquisition of linguistic variation
 - [Regularization of inconsistent input]() - Austin, Furlong, Schuler & Newport
 - [Developing a one-day paradigm]() - Schuler & Newport
+- []
 - [Adults under cognitive load]() - Schuler & Newport
 - [Acquisition of conditioned variation]() - Schuler, Furlong, & Newport
 
