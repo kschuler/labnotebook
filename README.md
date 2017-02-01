@@ -1,7 +1,7 @@
 # K. Schuler Lab Notebook
 
 ## Statistical and distributional learning experiments
-###### Acquiring grammatical categories via distributional learning
+###### Acquiring grammatical categories via distributional learning (QAXBR)
 
 - [variable word frequency](qaxbr/raggedyness.md) - Schuler, Reeder, Newport & Aslin
 - [children](qaxbr/kids.md) - Schuler, Reeder, Lukens, Newport & Aslin
@@ -12,7 +12,7 @@
 - [Replications of original experiments](wordseg/lang-replications.md) - Saffran et al. 1996; Newport & Aslin 2004
 - [Patients]() - Fama, Schuler, Turkeltaub & Newport
 
-###### Time-course of statistical learning, adjacent and non-adjacent dependencies
+###### Time-course of statistical learning, adjacent and non-adjacent dependencies (SRT)
 - [Developing an SRT paradigm](wordseg/adult-srt-paradigm.md) - Schuler, Newport, Howard & Howard
 - [Developing an SRT paradigm for children](wordseg/child-srt-paradigm.md) - Schuler, Newport & Aslin
 - [Time-course of statistical learning across development](wordseg/across-development.md) - Schuler, Newport & Aslin
