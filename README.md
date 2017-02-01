@@ -7,7 +7,7 @@
 - [children](qaxbr/kids.md) - Schuler, Reeder, Lukens, Newport & Aslin
 - [older adults (65+)](qaxbr/older-adults.md) - Schwab, Schuler, Stillman, Howard, Howard & Newport
 
-###### Segmenting words from fluent speech via statistical learning
+###### Word segmentation via statistical learning
 
 - [Replications of original experiments](wordseg/lang-replications.md) - Saffran et al. 1996; Newport & Aslin 2004
 - [Patients]() - Fama, Schuler, Turkeltaub & Newport
