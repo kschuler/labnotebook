@@ -4,7 +4,7 @@
 * [Statistical learning](chapter1.md)
 
 * Rules and variation
-    * [Empirical Yang](empirical-yang.md)
+    * [Empirical Yang](empirical-yang/README.md)
     * [Incon Input]
 * Hierarchical structure
 
