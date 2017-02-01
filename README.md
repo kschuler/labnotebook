@@ -10,7 +10,7 @@
 ###### Segmenting words from fluent speech via statistical learning
 
 - [Replications of existing language experiments](wordseg/lang-replications.md)
-- [Patients]()
+- [Patients]() - Fama, Schuler, Turkeltaub & Newport
 
 ###### Time-course of statistical learning, adjacent and non-adjacent dependencies
 - [Developing an SRT paradigm](wordseg/adult-srt-paradigm.md) - Schuler, Newport, Howard & Howard
