@@ -5,6 +5,6 @@
 
 * Rules and variation
     * [Empirical Yang](empirical-yang/README.md)
-    * [Incon Input]
+    * [Incon Input](incon-input/README.md)
 * Hierarchical structure
 
