@@ -3,9 +3,9 @@
 ## Statistical and distributional learning experiments
 ###### Acquiring grammatical categories via distributional learning (QAXBR)
 
-- [variable word frequency](qaxbr/raggedyness.md) - Schuler, Reeder, Newport & Aslin
-- [children](qaxbr/kids.md) - Schuler, Reeder, Lukens, Newport & Aslin
-- [older adults (65+)](qaxbr/older-adults.md) - Schwab, Schuler, Stillman, Howard, Howard & Newport
+- [Variable word frequency](qaxbr/raggedyness.md) - Schuler, Reeder, Newport & Aslin
+- [Children](qaxbr/kids.md) - Schuler, Reeder, Lukens, Newport & Aslin
+- [Older adults (65+)](qaxbr/older-adults.md) - Schwab, Schuler, Stillman, Howard, Howard & Newport
 
 ###### Word segmentation via statistical learning (Word Seg)
 
