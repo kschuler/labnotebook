@@ -31,7 +31,7 @@
 - [Adults under cognitive load]() - Schuler & Newport
 - [Acquisition of conditioned variation]() - Schuler, Furlong, & Newport
 
-### Statistical learning of hierarchical structure
+## Hierarchical structure experiments
 - [Hierachical trees]() - Handshuh, Schuler, Landau & Newport
 - [Replicating Thompson & Newport in an SRT task]() - Schuler & Newport
 - [Learning bias for hierarchical structure]() - Schuler & Newport
