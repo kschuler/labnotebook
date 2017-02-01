@@ -24,7 +24,7 @@
 
 - [Refining the one-day paradigm for empirical yang]() - Schuler, Yang & Newport
 - [Tolerance principle in children compared with adults]() - Schuler, Yang & Newport
-- [Tolerance principle in adults](https://kschuler.gitbooks.io/documentation/content/empirical-yang/0167-empiricalyang-9noun-hfrule-adults-fastproduction-R-analysis.html) - Schuler, Yang & Newport
+- [Tolerance principle in adults](empirical-yang/0167-empiricalyang-9noun-hfrule-adults-fastproduction-R-analysis.Rmd) - Schuler, Yang & Newport
 
 ###### Acquisition of linguistic variation (Incon Input)
 - [Regularization of inconsistent input (5-day)]() - Austin, Furlong, Schuler & Newport
