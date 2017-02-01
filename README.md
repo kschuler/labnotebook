@@ -29,7 +29,7 @@
 ###### Acquisition of linguistic variation (Incon Input)
 - [Regularization of inconsistent input (5-day)]() - Austin, Furlong, Schuler & Newport
 - [Developing a one-day paradigm]() - Schuler & Newport
-- [The Sufficiency Principle in regularization]() - 
+- [Sufficiency Principle in regularization]() - 
 - [Adults under cognitive load]() - Schuler & Newport
 - [Acquisition of conditioned variation]() - Schuler, Furlong, & Newport
 
