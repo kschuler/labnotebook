@@ -7,7 +7,7 @@
 - [children](qaxbr/kids.md) - Schuler, Reeder, Lukens, Newport & Aslin
 - [older adults (65+)](qaxbr/older-adults.md) - Schwab, Schuler, Stillman, Howard, Howard & Newport
 
-###### Word segmentation via statistical learning
+###### Word segmentation via statistical learning (Word Seg)
 
 - [Replications of original experiments](wordseg/lang-replications.md) - Saffran et al. 1996; Newport & Aslin 2004
 - [Patients]() - Fama, Schuler, Turkeltaub & Newport
@@ -20,16 +20,16 @@
 - [Time-course of learning in patients with aphasia](wordseg/patients.md) - Schuler, Fama, Turkeltaub & Newport
 
 ## Acquisition of rules and variation experiments
-###### Acquisition of morphological rules
+###### Acquisition of morphological rules (Empirical Yang)
 
-- [Refining the empirical yang paradigm]() - Schuler, Yang & Newport
-- [Children compared with adults]() - Schuler, Yang & Newport
-- [Adults under cognitive load]() - Schuler, Yang & Newport
+- [Refining the one-day paradigm for empirical yang]() - Schuler, Yang & Newport
+- [Tolerance principle in children compared with adults]() - Schuler, Yang & Newport
+- [Tolerance principle in adults]() - Schuler, Yang & Newport
 
-###### Acquisition of linguistic variation
-- [Regularization of inconsistent input]() - Austin, Furlong, Schuler & Newport
+###### Acquisition of linguistic variation (Incon Input)
+- [Regularization of inconsistent input (5-day)]() - Austin, Furlong, Schuler & Newport
 - [Developing a one-day paradigm]() - Schuler & Newport
-- []
+- [The Sufficiency Principle in regularization]() - 
 - [Adults under cognitive load]() - Schuler & Newport
 - [Acquisition of conditioned variation]() - Schuler, Furlong, & Newport
 
