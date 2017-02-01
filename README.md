@@ -1,6 +1,6 @@
 # K. Schuler Lab Notebook
 
-## Statistical and distributional learning 
+## Statistical and distributional learning experiments
 ###### Acquiring grammatical categories via distributional learning
 
 - [variable word frequency](qaxbr/raggedyness.md) - Schuler, Reeder, Newport & Aslin
@@ -9,7 +9,7 @@
 
 ###### Segmenting words from fluent speech via statistical learning
 
-- [Replications of existing language experiments](wordseg/lang-replications.md)
+- [Replications of original experiments](wordseg/lang-replications.md) - Saffran et al. 1996; Newport & Aslin 2004
 - [Patients]() - Fama, Schuler, Turkeltaub & Newport
 
 ###### Time-course of statistical learning, adjacent and non-adjacent dependencies
