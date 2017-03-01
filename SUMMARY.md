@@ -2,6 +2,9 @@
 
 * [Introduction](README.md)
 * [QAXBR](qaxbr/README.md)
+    * [QAXBR Raggedyness]
+    * [QAXBR Kid]
+    * [QAXBR Older Adults]
 * [Word Segmentation](word-seg/README.md)
 * [SRT](SRT/README.md)
 * [Empirical Yang](empirical-yang/README.md)
