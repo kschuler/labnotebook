@@ -3,9 +3,17 @@
 * [Introduction](README.md)
 * [QAXBR](qaxbr/README.md)
     * Raggedyness
-        * [0164](qaxbr/qaxbr-raggedyness/README.md)
+        * 0110-qaxbr-raggedyness-exp1-incomplete-dense
+        * 0111-qaxbr-raggedyness-exp2-complete-sparse-x4
+        * 0112-qaxbr-raggedyness-exp3-incomplete-sparse-x4
     * [Kid]()
+        * 0120-axb-kids-exp1-complete-dense
+        * 0121-axb-kids-exp2-complete-sparse-x4
+        * 0122-axb-kids-exp3-incomplete-sparse-x4
+        * 0123-axb-kids-exp4-incomplete-sparse-long-x4
     * [Older Adults]()
+        * 0130-qaxbr-old-exp1-aliengame
+        * 0131-qaxbr-old-exp2-original
 * [Word Segmentation](word-seg/README.md)
 * [SRT](SRT/README.md)
 * [Empirical Yang](empirical-yang/README.md)
