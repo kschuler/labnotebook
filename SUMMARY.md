@@ -6,7 +6,7 @@
     * 0110-qaxbr-raggedyness-exp1-incomplete-dense
     * 0111-qaxbr-raggedyness-exp2-complete-sparse-x4
     * 0112-qaxbr-raggedyness-exp3-incomplete-sparse-x4
-  * [QAXBR KID](qaxbr/kid.md)
+  * [QAXBR KID](qaxbr/qaxbr-kid.md)
     * 0120-axb-kids-exp1-complete-dense
     * 0121-axb-kids-exp2-complete-sparse-x4
     * 0122-axb-kids-exp3-incomplete-sparse-x4
