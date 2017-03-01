@@ -1,13 +1,11 @@
 # Summary
 
 * [Introduction](README.md)
-* [Georgetown University ](chapter1.md)
-  * [QAXBR   ](qaxbr/README.md)
-  * [Word Seg   ](word-seg/README.md)
-  * [SRT](SRT/README.md)
-* Rules and variation
-  * [Empirical Yang](empirical-yang/README.md)
-  * [Incon Input](incon-input/README.md)
-* Hierarchical structure
+* [QAXBR   ](qaxbr/README.md)
+* [Word Segmentation](word-seg/README.md)
+* [SRT](SRT/README.md)
+* [Empirical Yang](empirical-yang/README.md)
+* [Incon Input](incon-input/README.md)
+* [Hierarchical structure](hierarchical-structure.md)
 * [0164-FINAL-ANALYSIS](0164-FINAL-ANALYSIS.md)
 
