@@ -6,7 +6,7 @@ In this line of work I ask how categories are acquired from distirbutional infor
 
 Schuler, Reeder, Newport & Aslin
 
-- [0110-qaxbr-raggedyness-exp1-incomplete-dense](error.html)
+- [0110-qaxbr-raggedyness-exp1-incomplete-dense](#0164-FINAL-ANALYSIS.md)
 - [0111-qaxbr-raggedyness-exp2-complete-sparse-x4](error.html)
 - [0112-qaxbr-raggedyness-exp3-incomplete-sparse-x4](error.html)
 
