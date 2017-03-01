@@ -1,4 +1,4 @@
 {
-    "plugins": ["collapsible-chapters", "fontsettings"],
+    "plugins": ["collapsible-chapters"]
 
 }
