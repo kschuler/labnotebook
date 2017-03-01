@@ -1,5 +1,11 @@
 # Empirical Yang
 
+
+
+$$\textrm{e} \leq \theta_{9}  \quad \textrm{where} \quad  \theta_{9} := \frac{9}{ln(9)} = 4.096$$
+
+
+
 In this line of work I ask how children (and adults) form morphological rules.
 
 ### Refining the one-day paradigm for empirical yang
