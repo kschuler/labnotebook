@@ -15,7 +15,7 @@
     * 0130-qaxbr-old-exp1-aliengame
     * 0131-qaxbr-old-exp2-original
 * [Word Segmentation](word-seg/README.md)
-* [SRT](SRT/README.md)
+* [SRT](srt/README.md)
 * [Empirical Yang](empirical-yang/README.md)
 * [Incon Input](incon-input/README.md)
 * [Hierarchical structure](hierarchical-structure.md)
