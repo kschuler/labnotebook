@@ -59,6 +59,9 @@ Materials
 -   The Tolerance Principle (Yang, 2016)
 -   Learners will form a productive rule when it is more computationally efficient
 -   Let R be a rule that is applicable to N items, of which e are exceptions. R is productive iff: ![Tolerance Principle](https://www.dropbox.com/s/aloo7x9iawpzxj8/tolerance-principle.png?dl=1)
+    -   $\\textrm{e} \\leq \\theta\_{9} \\quad \\textrm{where} \\quad \\theta\_{9} := \\frac{9}{ln(9)} = 4.096$
+    -   
+        $$\\textrm{e} \\leq \\theta\_{9}  \\quad \\textrm{where} \\quad  \\theta\_{9} := \\frac{9}{ln(9)} = 4.096$$
 
 ### Language
 
