@@ -5,9 +5,15 @@ last updated 2016-12-05
 
 -   [Introduction](#introduction)
 -   [Materials and Method](#materials-and-method)
+    -   [Subjects](#subjects)
+    -   [Materials](#materials)
+    -   [Procedure](#procedure)
 -   [Results and analysis](#results-and-analysis)
+    -   [Participants](#participants)
+    -   [Data cleaning](#data-cleaning)
+    -   [Production data](#production-data)
 
-This experiment was conducted by Jessie Burke (summer research student), Kathryn Schuler (graduate student) and Elissa Newport (advisor). The lab manager at the time of running was Jaclyn Horowitz. The data was collected at Georgetown University and DC metro area summer camps from June 14, 2016 to October, 25, 2016.
+This experiment was conducted by Jessie Burke (summer research student), Kathryn Schuler (graduate student) and Elissa Newport (PI) and was based on a theory and computational model proposed by Charles Yang (U. Penn). The lab manager at the time of running was Jaclyn Horowitz. The data was collected at Georgetown University and DC metro area summer camps from June 14, 2016 to October, 25, 2016.
 
 -   This experiment was reported in :
     -   2016 - CogSci presentation (but not the paper)
@@ -17,117 +23,151 @@ This experiment was conducted by Jessie Burke (summer research student), Kathryn
     -   2017 - Open Mind paper
 
 Introduction
-------------
+============
 
-The Tolerance Principle is a computational model that attempts to predict when a child will form a productive rule during language acquisition (Yang, 2016). The Tolerance Principle predicts accurately in corpus data and has also been shown to work in artificial languages (Yang, 2016). In previous artificial language studies, the Tolerance Principle successfully predicted productive rule formation when the regular form had the highest frequency, but it remains to be seen if frequency changes would still be accommodated within the model. Because the Tolerance Principle has been shown to work well in corpus data when the exceptions are randomly distributed in the top half (a language like condition), in this experiment we are testing whether this would hold true in artificial language learning. Using a paradigm that lowers the frequency of the regular form and increases the frequency of exceptions, we want to see if kids still form a productive rule despite the regular form not being the most frequent. We expect our results to either provide stronger evidence for the predictive power of the Tolerance Principle or to show where it fails and must be reconsidered. (abstrat written by student Jessie Burke)
+The Tolerance Principle is a computational model that attempts to predict when a child will form a productive rule during language acquisition (Yang, 2016). The Tolerance Principle predicts accurately in corpus data and has also been shown to work in artificial languages (Yang, 2016). In previous artificial language studies, the Tolerance Principle successfully predicted productive rule formation when the regular form had the highest frequency, but it remains to be seen if frequency changes would still be accommodated within the model. Because the Tolerance Principle has been shown to work well in corpus data when the exceptions are randomly distributed in the top half (a language like condition), in this experiment we are testing whether this would hold true in artificial language learning. Using a paradigm that lowers the frequency of the regular form and increases the frequency of exceptions, we want to see if kids still form a productive rule despite the regular form not being the most frequent. We expect our results to either provide stronger evidence for the predictive power of the Tolerance Principle or to show where it fails and must be reconsidered. (abstract written by student Jessie Burke)
 
 Materials and Method
---------------------
+====================
 
-### Subjects
+Subjects
+--------
 
 -   Adults:
-    -   XX GU undergrads | X male, X female (X excluded)
+    -   see [Participants](#participants) for demographic info
+    -   native English speakers (but multilingual permitted)
     -   compensated $10
 -   Children:
-    -   XX children recruited from XX | X male, X female (X excluded)
+    -   see [Participants](#participants) for demographic info
+    -   native English speakers (but multilingual permitted)
     -   compensated with a prize bag of small toys (and $10 if run in the lab)
 
-### Materials
+Materials
+---------
 
-#### Equipment
+### Equipment
 
 -   Hardware:
-    -   Macbook Air
+    -   Macbook Air (OSX)
     -   Sennheiser HD555 open-air headphones
     -   Internal microphone of Macbook Air
 -   Software: Python, PsychoPy
+    -   Note: Audacity used for some recordings as PsychoPy's microphone API unreliable
 
-#### Language
+### Model
 
--   15 total nouns: (9 familiar) `mawg`, `tombur`, `glim`, `zup`, `spad`, `daygin`, `flairb`, `clidam`, `lepal`, (6 novel) `bleggin`, `daffin`, `norg`, `sep`, `flugit`, `geed`
--   1 verb: `gentif`, means "there is" or "there are"
--   7 plural markers: (1 regular)`ka`, (6 exceptions) `po`, `lee`, `bae`, `tay`, `muy`, `woo`
+-   The Tolerance Principle (Yang, 2016)
+-   Learners will form a productive rule when it is more computationally efficient
+-   Let R be a rule that is applicable to N items, of which e are exceptions. R is productive iff: ![Tolerance Principle](https://www.dropbox.com/s/aloo7x9iawpzxj8/tolerance-principle.png?dl=1)
+
+### Language
+
+-   15 total nouns:
+    -   9 familiar: `mawg`, `tombur`, `glim`, `zup`, `spad`, `daygin`, `flairb`, `clidam`, `lapal`
+    -   6 novel: `bleggin`, `daffin`, `norg`, `sep`, `flugit`, `geed`
+-   1 verb: `gentif` (means "there is" or "there are")
+-   7 plural markers:
+    -   1 regular form: `ka` (applied to most frequent nouns)
+    -   6 exceptions: `po`, `lee`, `bae`, `tay`, `muy`, `woo`
 -   Sentences constructed:
     -   Singular: `V` + `N` + `null` (e.g. `gentif mawg`)
     -   Plural: `V` + `N` + `MARKER` (e.g. `gentif mawg ka`)
 -   Conditions:
-    -   5R4E Exposure: regular form 'ka' occurs 5 times and exceptions occur 4 times
-        -   Exposure A : regular form 'ka' occurs at the highest frequency
-        -   Exposure B : exception 'po' occurs at the highest frequency
-    -   3R6E Exposure: regular form 'ka' occurs 3 times and exceptions occur 6 times
-        -   Exposure A: regular form 'ka' occurs at the highest frequency
-        -   Exposure B: exception 'po' occurs at the highest frequency
+    -   Compute the threshold for forming a productive rule by the Tolerance Principle (for our 9 nouns): ![Tolerance Principle Computed](https://www.dropbox.com/s/xqsgv197a75oz7z/tolerance-principle-9.png?dl=1)
+        -   Thus, can tolerate 4 exceptions to the rule (regular form), but not 5 or more.
+    -   5R4E Exposure: 5 types take the regular form `ka` and 4 remaining types take exceptions.
+        -   Language A: The most frequent noun (`mawg`) in Zipfian distribution takes the regular form `ka`
+            -   Token fq. of regular form = 63.27%
+        -   Language B: The most frequent noun (`mawg`) in Zipfian distribution takes an exception
+            -   Token fq. of regular form = 36.73%
+    -   3R6E Exposure: 3 types take the regular form `ka` and 6 remaining types take exceptions.
+        -   Language A: The most frequent noun (`mawg`) in Zipfian distribution takes the regular form `ka`
+            -   Token fq. of regular form = 51.02%
+        -   Language B: The most frequent noun (`mawg`) in Zipfian distribution takes an exception
+            -   Token fq. of regular form = 30.61%
 
 #### Stimuli
 
 -   Images of "toasters" and pre-recorded words (adult female voice)
+-   words recorded in isolation.
+-   standard [editing](https://guide.kathrynschuler.com/guidelines/making-stimuli.html#how-to-edit-sounds) applied to recordings.
 -   Exposure set:
     -   72 total sentences paired with corresponding picture
-    -   each noun is paired with its own specific marker and appears at varying frequencies across conditions
+    -   each noun is paired with a specific plural marker (see [Language](#language))
     -   1/3 of presentations were singular and 2/3 plural for each noun
     -   plurals appeared in groups of 2, 4, or 6
     -   Zipfian distribution
--   Test set:
-    -   All novel nouns presented once: `bleggin`, `daffin`, `norg`, `sep`, `flugit`, `geed`
-    -   plurals appeared in groups of 3 or 5
+-   Production test set:
+    -   All novel nouns presented twice: `bleggin`, `daffin`, `norg`, `sep`, `flugit`, `geed`
+    -   Once in groups of 3 and once in groups of 5
+-   Rating test set:
+    -   All 9 familiar nouns presented 4 times in 2AFC
+        -   paired with four different incorrect plural markers
 
-### Procedure
+Procedure
+---------
 
 -   Exposure:
     -   see a picture and hear the sentence that goes with the picture
     -   repeat the sentence
-    -   break every 24 trials (for sticker)
+    -   break every 18 trials (for sticker)
 -   Production test:
     -   modeled after wug test (Berko, 1958)
     -   see a singular picture and hear corresponding sentence
     -   participant asked to produce plural sentence for same noun
 -   Rating test:
-    -   see picture and hear corresponding sentence
-    -   rate on a scale of 1 to 5 (give 1 to 5 stars)
+    -   2AFC test in which there is a child in a purple shirt and a child in a green shirt on the screen.
+    -   A test image appears in the box and the two cartoon children take turns producing a sentence to match the picture.
+    -   participants must decide which child said the sentences correctly in silly speak
 
 Results and analysis
---------------------
+====================
 
-### Setting up
+Participants
+------------
 
-We begin by loading the required packages, setting up some figure parameters, and specifying file paths.
+### Included in analysis
 
-Then we load the data.
+The following describes the participants that were included in analysis by age group.
 
-``` r
-lexicon <- fread(paste(DATA_PATH, '/0164-lexicon-key.csv', sep="")) %>% 
-  tbl_df
+| age.group |  n.subjs|  n.female|  min.age|  max.age|   mean.age|     sd.age|
+|:----------|--------:|---------:|--------:|--------:|----------:|----------:|
+| adult     |       24|        20|    18.05|    25.43|  20.885417|  2.2256469|
+| child     |       23|        12|     5.19|     7.82|   6.746956|  0.7857216|
 
+The following describes the participants included in analysis further broken down by condition.
 
-# Import subject tracking sheet
-subjects <- fread(SUBJ_TRACK) %>%
-  tbl_df
+| age.group | condition |  n.subjs|  n.female|  min.age|  max.age|   mean.age|     sd.age|
+|:----------|:----------|--------:|---------:|--------:|--------:|----------:|----------:|
+| adult     | 3R6E      |       10|         8|    18.48|    25.43|  21.911000|  2.7932794|
+| adult     | 5R4E      |       14|        12|    18.05|    22.51|  20.152857|  1.4054204|
+| child     | 3R6E      |        8|         5|     5.19|     7.80|   6.695000|  0.8846630|
+| child     | 5R4E      |       15|         7|     5.32|     7.82|   6.774667|  0.7592465|
 
-# Import and combine subject production data and merge with subject tracking
-prod.data <- list.files(paste(DATA_PATH, '/production-coder-madi/production', sep=""), full.names = TRUE) %>%
-    lapply(fread) %>%
-    bind_rows %>%
-    tbl_df %>%
-    left_join(subjects, by ="subject") 
+### Excluded from analysis
 
-# Import and combine subject rating data and merge with subject tracking
-rate.data.v123 <- list.files(paste(DATA_PATH, '/rating-v123', sep=""), full.names = TRUE) %>%
-    lapply(fread) %>%
-    bind_rows %>%
-    tbl_df %>%
-    left_join(subjects, by ="subject")
+The following describes participants that were excluded from analysis
 
-# Import and combine subject rating data and merge with subject tracking
-rate.data.v4 <- list.files(paste(DATA_PATH, '/rating-v4', sep=""), full.names = TRUE) %>%
-    lapply(fread) %>%
-    bind_rows %>%
-    tbl_df %>%
-    left_join(subjects, by ="subject") %>%
-    left_join(lexicon, by = c("condition.x", "noun"))
-```
+| age.group |  n.subjs|  n.female|  min.age|  max.age|  mean.age|    sd.age|
+|:----------|--------:|---------:|--------:|--------:|---------:|---------:|
+| adult     |        6|         5|    18.49|    24.24|  20.57833|  2.123953|
+| child     |        2|         1|     6.61|     6.91|   6.76000|  0.212132|
 
-### Data cleaning
+Details about excluded subjects are provided below. Reasons for exclusion are given in the notes.
+
+| age.group | condition | subject | gender |    age| notes                                                       |
+|:----------|:----------|:--------|:-------|------:|:------------------------------------------------------------|
+| adult     | 3R6E      | S25     | female |  21.67| english not native language, she learned it in kindergarten |
+| adult     | 5R4E      | S17     | female |  19.32| psychopy quit right before rating test began                |
+| adult     | 5R4E      | S18     | female |  18.49| psychopy quit right before rating test began                |
+| adult     | 5R4E      | S19     | female |  19.16| psychopy quit right before rating test began                |
+| adult     | 5R4E      | S20     | male   |  24.24| psychopy quit right before rating test began                |
+| adult     | 5R4E      | S21     | female |  20.59| psychopy quit during production test                        |
+| child     | 3R6E      | C12     | male   |   6.91| not a native English speaker                                |
+| child     | 5R4E      | C07     | female |   6.61| did not complete the study or produce any nouns             |
+
+Data cleaning
+-------------
 
 For production data:
 
@@ -136,413 +176,257 @@ For production data:
 -   trial not included if participant does not produce the correct noun
 -   analyze out of correct nouns
 
-For rating data: - participant not included if complets &lt; 50% of rating trials - participant not included if rates every trial with the same value (all 5, all 1, etc)
+For rating data:
 
-``` r
-# calculate the criteria above for production data
-prod.criteria <- group_by(prod.data, subject, condition.y) %>%
-  summarise(totaltrials = n(), n.correct.nouns = sum(corrNoun))
+-   participant not included if completes &lt; 50% of rating trials
+-   participant not included if rates every trial with the same value (all 5, all 1, etc)
 
-# calculate the criteria above for rating data
-rate.criteria.v123 <- group_by(rate.data.v123, subject, condition.y) %>%
-  summarise(totaltrials = n(), n.distinct.answers = n_distinct(rating))
-
-rate.criteria.v4 <- group_by(rate.data.v4, subject, condition.y) %>%
-  summarise(totaltrials = n(), n.distinct.answers = n_distinct(rating))
-
-# uncomment to see these critera in a summary table
-# prod.criteria %>% as.data.frame %>% kable
-# rate.criteria %>% as.data.frame %>% kable
-
-# remove participants and trials that do not meet criteria for production
-prod.clean <- left_join(prod.data, prod.criteria, by = c("subject", "condition.y")) %>%
-  filter(KDS.exclude != 1, n.correct.nouns >= 6, corrNoun == 1)
-
-# remove participants and trials that do not meet criteria for rating
-rate.clean.v123 <- left_join(rate.data.v123, rate.criteria.v123, by = c("subject", "condition.y")) %>%
-  filter(KDS.exclude != 1, totaltrials >=6, n.distinct.answers > 1)
-
-rate.clean.v4 <- left_join(rate.data.v4, rate.criteria.v4, by = c("subject", "condition.y")) %>%
-  filter(KDS.exclude != 1, totaltrials >=6, n.distinct.answers > 1)
-```
-
-### Demographic Data
-
-### Production data
+Production data
+---------------
 
 For each production test trial, participants were asked to produce the plural form of a novel noun they heard only in a singular form. These novel productions allowed us to assess whether participants formed a productive rule. Recall that the Tolerance Principle predicts that there will be a categorical distinction between productive and unproductive (lexically specific) rules. In our artificial language, a productive rule should be formed if more than 4.096 nouns obey the rule (as in our 5 regular/4 exception condition), but not if fewer than 4.096 nouns do (as in our 3 regular/6 exception condition). When a productive rule is formed, it should be applied to 100% of novel nouns, as is the case for English past tense ‘add –ed.’.
 
 To determine whether participants formed a productive rule, we performed a one-tailed t-test against the hypothesized value of 100%. Participants who have formed a productive rule should, according to the Tolerance Principle, mark these novel plural sentences with ka 100% of the time. On the other hand, participants who have not formed a productive rule should use the ka inflection significantly less than 100% (and perhaps no more frequently than other inflection forms are used).
 
-#### Data Analysis
+We ask the folowing questions in our analysis (for both children and adults):
 
-What is the percent majority determiner usage by age group?
+-   Does the Tolerance Principle predict when learners will generalize the majority variant?
+    -   Do learners use the majority variant on 100% of test trials (form a productive rule)?
+    -   Or do learners use the majority variant on no more than what we expect by chance (strongly resist generalization)?
+    -   Or do learners match the input frequency of the majority variant (probability match)?
 
-``` r
-# reorder levels of factors into the order we want
-prod.clean$age.group <- factor(prod.clean$age.group, levels = c("child", "adult"))
-prod.clean$condition.y <- factor(prod.clean$condition.y, levels = c("5R4E", "3R6E"))
-prod.clean$categoryDet <- factor(prod.clean$categoryDet, levels = c("R", "e", "null", "other"))
+### Group data
 
-# get the percent usages by subject by age.group by condition by category (maj/min)
-mean.marker.usage <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% as.data.frame %>%
-  group_by(age.group, condition.y, categoryDet) %>%
-  summarise(n.subj = n_distinct(subject), mean.pcntusage = mean(pcntusage), std.error = SEM(pcntusage))
+What is the percent usage of markers (R, e, null, other) by condition for each age group?
 
-mean.marker.usage.lang <- group_by(prod.clean, subject, condition.y, language, age.group, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, condition.y, language, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% as.data.frame %>%
-  group_by(age.group, condition.y, language, categoryDet) %>%
-  summarise(n.subj = n_distinct(subject), mean.pcntusage = mean(pcntusage), std.error = SEM(pcntusage))
-# print it as a pretty table
-#mean.marker.usage %>% as.data.frame %>% kable
+| Age   | Condition | Marker |    N|      Mean|        SD|        SEM|
+|:------|:----------|:-------|----:|---------:|---------:|----------:|
+| child | 5R4E      | R      |   14|  39.89177|  46.39918|  12.400701|
+| child | 3R6E      | R      |    8|   6.25000|  17.67767|   6.250000|
+| adult | 5R4E      | R      |   16|  54.49811|  35.12241|   8.780602|
+| adult | 3R6E      | R      |    9|  45.37037|  28.90091|   9.633635|
 
-# ttest for mean.marker.usage %>% filter(categoryDet == "maj") %>%
-# mean.marker.usage.t <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
-#   summarise(count = n()) %>%
-#   as.data.frame %>%
-#   complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-#   mutate(pcntusage = count/n.correct.nouns *100)
+#### Plots of child data
 
-# adult.pureincon <- filter(mean.marker.usage.t, age.group == "adult", condition.y == "PureIncon", categoryDet == "maj")
-# child.pureincon <- filter(mean.marker.usage.t, age.group == "child", condition.y == "PureIncon", categoryDet == "maj")
-# child.purecond <- filter(mean.marker.usage.t, age.group == "child", condition.y == "PureCond", categoryDet == "maj")
-# t.test(adult.pureincon$pcntusage, alternative = "greater", mu = 65.0)
-# t.test(child.pureincon$pcntusage, alternative = "greater", mu = 65.0)
-# t.test(child.purecond$pcntusage, alternative = "greater", mu = 65.0)
-# 
-# t.test(pcntusage, alternative = "two.sided", mu = 65.0)$p.value)
-```
+The dashed red line indicates the frequency of the majority form in the learner's exposure.
 
-Plot the results as individual dotplot.
+![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-9-1.png)![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-9-2.png)
+
+![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-10-1.png)
+
+![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-11-1.png)![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-11-2.png)
 
 ``` r
 # plot the mean percent usage by age.group and condition
-mmkid <- filter(mean.marker.usage, age.group == "child")
-
-ggplot(mmkid, aes(x = categoryDet, y = mean.pcntusage, fill = categoryDet)) +
-    facet_grid(. ~ condition.y) +
-    geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-    geom_errorbar(aes(ymin = mean.pcntusage - std.error, ymax = mean.pcntusage + std.error),
-                  position = position_dodge(width = 0.9), width = 0.25) +
-   scale_fill_manual(values=c("#5dc2dd", "#696969", "#A9A9A9", "#D3D3D3"))+
-    coord_cartesian(ylim = c(0, 101)) +
-    xlab("") +
-    ylab("Usage of plural marker") +
-    theme(legend.position = "none")
+# mmkid <- filter(mean.marker.usage, age.group == "child")
+# 
+# ggplot(mmkid, aes(x = categoryDet, y = mean.pcntusage, fill = categoryDet)) +
+#     facet_grid(. ~ condition.y) +
+#     geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#     geom_errorbar(aes(ymin = mean.pcntusage - std.error, ymax = mean.pcntusage + std.error),
+#                   position = position_dodge(width = 0.9), width = 0.25) +
+#    scale_fill_manual(values=c("#5dc2dd", "#696969", "#A9A9A9", "#D3D3D3"))+
+#     coord_cartesian(ylim = c(0, 101)) +
+#     xlab("") +
+#     ylab("Usage of plural marker") +
+#     theme(legend.position = "none")
+# 
+# ggplot(mean.marker.usage.lang, aes(x = condition.y, y = mean.pcntusage, fill = categoryDet)) +
+#     facet_grid(language ~ age.group) +
+#     geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#     geom_errorbar(aes(ymin = mean.pcntusage - std.error, ymax = mean.pcntusage + std.error),
+#                   position = position_dodge(width = 0.9), width = 0.25) +
+#     geom_hline(yintercept = 67, linetype = "dashed") +
+#     coord_cartesian(ylim = c(0, 101)) +
+#     xlab("") +
+#     ylab("Usage of plural marker") +
+#     ggtitle("Overall") +
+#     theme(legend.title = element_blank())
+# 
+# # get the percent usages by subject by age.group by condition by category (maj/min)
+# indie.marker.usage <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
+#   summarise(count = n()) %>%
+#   as.data.frame %>%
+#   complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
+#   mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
+# 
+# 
+# ggplot(indie.marker.usage, aes(x = condition.y, y = pcntusage)) +
+#   facet_grid(. ~ age.group) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
+#   stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form") 
+# 
+# indie.marker.usage <- group_by(prod.clean, subject, condition.y, language, age.group, categoryDet, n.correct.nouns) %>%
+#   summarise(count = n()) %>%
+#   as.data.frame %>%
+#   complete(nesting(age.group, condition.y, language, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
+#   mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
+# 
+# 
+# ggplot(indie.marker.usage, aes(x = condition.y, y = pcntusage)) +
+#   facet_grid(language ~ age.group) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 6, fill = "lightskyblue") +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form") 
+# 
 ```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-5-1.png)
-
-``` r
-ggplot(mean.marker.usage.lang, aes(x = condition.y, y = mean.pcntusage, fill = categoryDet)) +
-    facet_grid(language ~ age.group) +
-    geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-    geom_errorbar(aes(ymin = mean.pcntusage - std.error, ymax = mean.pcntusage + std.error),
-                  position = position_dodge(width = 0.9), width = 0.25) +
-    geom_hline(yintercept = 67, linetype = "dashed") +
-    coord_cartesian(ylim = c(0, 101)) +
-    xlab("") +
-    ylab("Usage of plural marker") +
-    ggtitle("Overall") +
-    theme(legend.title = element_blank())
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-5-2.png)
-
-``` r
-# get the percent usages by subject by age.group by condition by category (maj/min)
-indie.marker.usage <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
-
-
-ggplot(indie.marker.usage, aes(x = condition.y, y = pcntusage)) +
-  facet_grid(. ~ age.group) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
-  stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form") 
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-5-3.png)
-
-``` r
-indie.marker.usage <- group_by(prod.clean, subject, condition.y, language, age.group, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, condition.y, language, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
-
-
-ggplot(indie.marker.usage, aes(x = condition.y, y = pcntusage)) +
-  facet_grid(language ~ age.group) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 6, fill = "lightskyblue") +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form") 
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-5-4.png)
 
 ### Rating data
 
 ``` r
-# reorder levels of factors
-rate.clean.v123$age.group <- factor(rate.clean.v123$age.group, levels = c("child", "adult"))
-rate.clean.v123$condition.y <- factor(rate.clean.v123$condition.y, levels = c("5R4E", "3R6E"))
-rate.clean.v123$cat <- factor(rate.clean.v123$cat, levels = c("R", "e"))
-
-# get the results for yes/no rating test (version12)
-mean.rate.v12 <- filter(rate.clean.v123, exp.version %in% c("v1", "v2")) %>%
-  mutate(typemod = ifelse(type == "correct", 1, 0),
-    iscorrect = ifelse(typemod == rating, 1, 0)) %>%
-  group_by(age.group, condition.y, language, subject, noun, cat) %>%
-  summarise(count = n(), corrsum = sum(iscorrect)) %>%
-  mutate(pcntcorr = corrsum/count*100) %>%
-  group_by(age.group, condition.y, language, noun, cat) %>%
-  summarise(mean.pcntcorr = mean(pcntcorr), std.error = SEM(pcntcorr))
-
-# uncomment to get a table of the results
-# mean.rate.v12 %>% as.data.frame %>% kable
-
-ggplot(mean.rate.v12, aes(x = condition.y, y = mean.pcntcorr, fill = noun)) +
-  facet_grid(age.group~language) +
-  geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-  geom_errorbar(aes(ymin = mean.pcntcorr - std.error, ymax = mean.pcntcorr + std.error),
-                position = position_dodge(width = 0.9), width = 0.25) +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Mean rating")
+# # reorder levels of factors
+# rate.clean.v123$age.group <- factor(rate.clean.v123$age.group, levels = c("child", "adult"))
+# rate.clean.v123$condition.y <- factor(rate.clean.v123$condition.y, levels = c("5R4E", "3R6E"))
+# rate.clean.v123$cat <- factor(rate.clean.v123$cat, levels = c("R", "e"))
+# 
+# # get the results for yes/no rating test (version12)
+# mean.rate.v12 <- filter(rate.clean.v123, exp.version %in% c("v1", "v2")) %>%
+#   mutate(typemod = ifelse(type == "correct", 1, 0),
+#     iscorrect = ifelse(typemod == rating, 1, 0)) %>%
+#   group_by(age.group, condition.y, language, subject, noun, cat) %>%
+#   summarise(count = n(), corrsum = sum(iscorrect)) %>%
+#   mutate(pcntcorr = corrsum/count*100) %>%
+#   group_by(age.group, condition.y, language, noun, cat) %>%
+#   summarise(mean.pcntcorr = mean(pcntcorr), std.error = SEM(pcntcorr))
+# 
+# # uncomment to get a table of the results
+# # mean.rate.v12 %>% as.data.frame %>% kable
+# 
+# ggplot(mean.rate.v12, aes(x = condition.y, y = mean.pcntcorr, fill = noun)) +
+#   facet_grid(age.group~language) +
+#   geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#   geom_errorbar(aes(ymin = mean.pcntcorr - std.error, ymax = mean.pcntcorr + std.error),
+#                 position = position_dodge(width = 0.9), width = 0.25) +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Mean rating")
 ```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ``` r
 # get the results for 1-5 scale rating test (version 3)
-mean.rate.v3 <- filter(rate.clean.v123, exp.version %in% c("v3")) %>%
-  group_by(age.group, condition.y, language, subject, cat) %>%
-  summarise(count = n(), mean.rate = mean(rating)) %>%
-  group_by(age.group, condition.y, language, cat) %>%
-  summarise(n.subjs = n(), avg.mean.rate = mean(mean.rate), std.error = SEM(mean.rate))
+# mean.rate.v3 <- filter(rate.clean.v123, exp.version %in% c("v3")) %>%
+#   group_by(age.group, condition.y, language, subject, cat) %>%
+#   summarise(count = n(), mean.rate = mean(rating)) %>%
+#   group_by(age.group, condition.y, language, cat) %>%
+#   summarise(n.subjs = n(), avg.mean.rate = mean(mean.rate), std.error = SEM(mean.rate))
 
 # uncomment to get a table of the results
-mean.rate.v3 %>% as.data.frame %>% kable
-```
+# mean.rate.v3 %>% as.data.frame %>% kable
+# 
+# ggplot(mean.rate.v3, aes(x = condition.y, y = avg.mean.rate, fill = cat)) +
+#   facet_grid(.~age.group) +
+#   geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#   geom_errorbar(aes(ymin = avg.mean.rate - std.error, ymax = avg.mean.rate + std.error),
+#                 position = position_dodge(width = 0.9), width = 0.25) +
+#   coord_cartesian(ylim = c(1, 5)) +
+#   xlab("") +
+#   ylab("Mean rating")
+# ```
+# 
+# ```{r, echo=TRUE, fig.width=8, fig.height=8}
+# 
+# # get the results for 1-5 scale rating test (version 3)
+# mean.rate.v4 <- mutate(rate.data.v4, iscorrect = ifelse(rating == whichCorrect, 1, 0)) %>%
+#   group_by(age.group, condition.y, language, subject, corr.det.cat,noun.rank) %>%
+#   summarise(count = n(), n.corr = sum(iscorrect), pcntcorr = n.corr/count*100) %>% print
+#   # group_by(age.group, condition.y, language, corr.det.cat, noun.rank) %>%
+#   # summarise(n.subjs = n(), avg.pcntcorr = mean(pcntcorr), std.error = SEM(pcntcorr))
+# 
+# # uncomment to get a table of the results
+# # mean.rate.v4 %>% as.data.frame %>% kable
+# 
+# 
+# mean.rate.v4.kids <- filter(mean.rate.v4, age.group == "child")
+# mean.rate.v4.adults <- filter(mean.rate.v4, age.group == "adult")
+# 
+# 
+# 
+# 
+# 
+# ggplot(mean.rate.v4.kids, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
+#   facet_wrap(subject ~ condition.y) +
+#   geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#   # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
+#   #               position = position_dodge(width = 0.9), width = 0.25) +
+#   geom_hline(yintercept = 50, linetype = "dashed") +
+#   coord_cartesian(ylim = c(0, 100)) +
+#   xlab("") +
+#   ylab("Mean rating") +
+#   scale_fill_manual(values=c("#696969", "#5dc2dd"))+
+#   theme(legend.position = "none")
+# 
+# 
+# c17 <- filter(mean.rate.v4.kids, subject == "C17")
+# c22 <- filter(mean.rate.v4.kids, subject == "C22")
+# 
+# ggplot(c17, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
+#   facet_wrap(~subject) +
+#   geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#   # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
+#   #               position = position_dodge(width = 0.9), width = 0.25) +
+#   geom_hline(yintercept = 50, linetype = "dashed") +
+#   coord_cartesian(ylim = c(0, 100)) +
+#   xlab("") +
+#   ylab("Proportion correct") +
+#   scale_fill_manual(values=c("#696969", "#5dc2dd"))+
+#   theme(legend.position = "none")
+# ggsave('/Users/kathrynschuler/Desktop/pentalk-3.png', width=6, height=4)
+# 
+# 
+# ggplot(c22, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
+#   facet_wrap(~subject) +
+#   geom_bar(stat = "identity", position = position_dodge(), color = "black") +
+#   # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
+#   #               position = position_dodge(width = 0.9), width = 0.25) +
+#   geom_hline(yintercept = 50, linetype = "dashed") +
+#   coord_cartesian(ylim = c(0, 100)) +
+#   xlab("") +
+#   ylab("Proportion correct") +
+#   scale_fill_manual(values=c("#696969", "#5dc2dd"))+
+#   theme(legend.position = "none")
+# ggsave('/Users/kathrynschuler/Desktop/pentalk-4.png', width=6, height=4)
+# 
+# 
+# 
+# ```
+# 
+# ```{r fig.width = 8, fig.height = 8}
+# rate.eln.a <- group_by(mean.rate.v4.kids, condition.y, subject) %>%
+#   summarise(mean.corr = mean(pcntcorr))%>%
+#   select(condition.y, subject, mean.corr)
+# 
+# 
+# 
+# rate.eln.a %>% as.data.frame %>% kable
+# 
+# rate.eln.b <- group_by(mean.rate.v4.kids, condition.y, subject, corr.det.cat) %>%
+#   summarise(mean.corr = mean(pcntcorr))%>%
+#   select(condition.y, subject, corr.det.cat, mean.corr) %>%
+#   spread(corr.det.cat, mean.corr)
+# 
+# rate.eln.a %>% as.data.frame %>% kable
+# 
+# 
+# rate.eln <- group_by(mean.rate.v4.kids, condition.y, subject, corr.det.cat) %>%
+#   summarise(mean.corr = mean(pcntcorr)) %>% 
+#   select(condition.y, subject, corr.det.cat, mean.corr) %>%
+#   spread(corr.det.cat, mean.corr) %>%
+#   filter(e > 62 | R > 62) 
+# 
+# # rate.eln$corr.det.cat <- factor(rate.eln$corr.det.cat, levels = c("R", "e")) 
+# 
+# 
+# 
+# 
+# rate.eln %>% as.data.frame %>% kable
+# 
 
-| age.group | condition.y | language | cat |  n.subjs|  avg.mean.rate|  std.error|
-|:----------|:------------|:---------|:----|--------:|--------------:|----------:|
-| child     | 5R4E        | B        | R   |        1|       4.200000|         NA|
-| child     | 5R4E        | B        | e   |        1|       4.625000|         NA|
-| child     | 3R6E        | A        | R   |        3|       3.555556|  0.4006168|
-| child     | 3R6E        | A        | e   |        3|       3.444444|  0.5879447|
-| adult     | 3R6E        | A        | R   |        1|       4.833333|         NA|
-| adult     | 3R6E        | A        | e   |        1|       4.916667|         NA|
-
-``` r
-ggplot(mean.rate.v3, aes(x = condition.y, y = avg.mean.rate, fill = cat)) +
-  facet_grid(.~age.group) +
-  geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-  geom_errorbar(aes(ymin = avg.mean.rate - std.error, ymax = avg.mean.rate + std.error),
-                position = position_dodge(width = 0.9), width = 0.25) +
-  coord_cartesian(ylim = c(1, 5)) +
-  xlab("") +
-  ylab("Mean rating")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-7-1.png)
-
-``` r
-# get the results for 1-5 scale rating test (version 3)
-mean.rate.v4 <- mutate(rate.data.v4, iscorrect = ifelse(rating == whichCorrect, 1, 0)) %>%
-  group_by(age.group, condition.y, language, subject, corr.det.cat,noun.rank) %>%
-  summarise(count = n(), n.corr = sum(iscorrect), pcntcorr = n.corr/count*100) %>% print
-```
-
-    ## Source: local data frame [162 x 9]
-    ## Groups: age.group, condition.y, language, subject, corr.det.cat [?]
-    ## 
-    ##    age.group condition.y language subject corr.det.cat noun.rank count
-    ##        <chr>       <chr>    <chr>   <chr>        <chr>     <chr> <int>
-    ## 1      adult        3R6E        A     S12            e        N2     3
-    ## 2      adult        3R6E        A     S12            e        N4     3
-    ## 3      adult        3R6E        A     S12            e        N6     3
-    ## 4      adult        3R6E        A     S12            e        N7     3
-    ## 5      adult        3R6E        A     S12            e        N8     3
-    ## 6      adult        3R6E        A     S12            e        N9     3
-    ## 7      adult        3R6E        A     S12            R        N1     3
-    ## 8      adult        3R6E        A     S12            R        N3     3
-    ## 9      adult        3R6E        A     S12            R        N5     3
-    ## 10     adult        3R6E        B     S13            e        N1     3
-    ## # ... with 152 more rows, and 2 more variables: n.corr <dbl>,
-    ## #   pcntcorr <dbl>
-
-``` r
-  # group_by(age.group, condition.y, language, corr.det.cat, noun.rank) %>%
-  # summarise(n.subjs = n(), avg.pcntcorr = mean(pcntcorr), std.error = SEM(pcntcorr))
-
-# uncomment to get a table of the results
-# mean.rate.v4 %>% as.data.frame %>% kable
-
-
-mean.rate.v4.kids <- filter(mean.rate.v4, age.group == "child")
-mean.rate.v4.adults <- filter(mean.rate.v4, age.group == "adult")
-
-
-
-
-
-ggplot(mean.rate.v4.kids, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
-  facet_wrap(subject ~ condition.y) +
-  geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-  # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
-  #               position = position_dodge(width = 0.9), width = 0.25) +
-  geom_hline(yintercept = 50, linetype = "dashed") +
-  coord_cartesian(ylim = c(0, 100)) +
-  xlab("") +
-  ylab("Mean rating") +
-  scale_fill_manual(values=c("#696969", "#5dc2dd"))+
-  theme(legend.position = "none")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-8-1.png)
-
-``` r
-c17 <- filter(mean.rate.v4.kids, subject == "C17")
-c22 <- filter(mean.rate.v4.kids, subject == "C22")
-
-ggplot(c17, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
-  facet_wrap(~subject) +
-  geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-  # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
-  #               position = position_dodge(width = 0.9), width = 0.25) +
-  geom_hline(yintercept = 50, linetype = "dashed") +
-  coord_cartesian(ylim = c(0, 100)) +
-  xlab("") +
-  ylab("Proportion correct") +
-  scale_fill_manual(values=c("#696969", "#5dc2dd"))+
-  theme(legend.position = "none")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-8-2.png)
-
-``` r
-ggsave('/Users/kathrynschuler/Desktop/pentalk-3.png', width=6, height=4)
-
-
-ggplot(c22, aes(x = noun.rank, y = pcntcorr, fill = corr.det.cat)) +
-  facet_wrap(~subject) +
-  geom_bar(stat = "identity", position = position_dodge(), color = "black") +
-  # geom_errorbar(aes(ymin = pcntcorr - std.error, ymax = pcntcorr + std.error),
-  #               position = position_dodge(width = 0.9), width = 0.25) +
-  geom_hline(yintercept = 50, linetype = "dashed") +
-  coord_cartesian(ylim = c(0, 100)) +
-  xlab("") +
-  ylab("Proportion correct") +
-  scale_fill_manual(values=c("#696969", "#5dc2dd"))+
-  theme(legend.position = "none")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-8-3.png)
-
-``` r
-ggsave('/Users/kathrynschuler/Desktop/pentalk-4.png', width=6, height=4)
-```
-
-``` r
-rate.eln.a <- group_by(mean.rate.v4.kids, condition.y, subject) %>%
-  summarise(mean.corr = mean(pcntcorr))%>%
-  select(condition.y, subject, mean.corr)
-
-
-
-rate.eln.a %>% as.data.frame %>% kable
-```
-
-| condition.y | subject |  mean.corr|
-|:------------|:--------|----------:|
-| 3R6E        | C13     |   55.55556|
-| 3R6E        | C14     |   66.66667|
-| 3R6E        | C15     |   66.66667|
-| 3R6E        | C16     |   62.96296|
-| 3R6E        | C20     |   62.96296|
-| 5R4E        | C17     |   74.07407|
-| 5R4E        | C18     |   70.37037|
-| 5R4E        | C19     |   48.14815|
-| 5R4E        | C21     |   48.14815|
-| 5R4E        | C22     |   77.77778|
-| 5R4E        | C23     |   51.85185|
-| 5R4E        | C24     |   66.66667|
-| 5R4E        | C25     |   55.55556|
-| 5R4E        | C26     |   66.66667|
-| 5R4E        | C27     |   59.25926|
-
-``` r
-rate.eln.b <- group_by(mean.rate.v4.kids, condition.y, subject, corr.det.cat) %>%
-  summarise(mean.corr = mean(pcntcorr))%>%
-  select(condition.y, subject, corr.det.cat, mean.corr) %>%
-  spread(corr.det.cat, mean.corr)
-
-rate.eln.a %>% as.data.frame %>% kable
-```
-
-| condition.y | subject |  mean.corr|
-|:------------|:--------|----------:|
-| 3R6E        | C13     |   55.55556|
-| 3R6E        | C14     |   66.66667|
-| 3R6E        | C15     |   66.66667|
-| 3R6E        | C16     |   62.96296|
-| 3R6E        | C20     |   62.96296|
-| 5R4E        | C17     |   74.07407|
-| 5R4E        | C18     |   70.37037|
-| 5R4E        | C19     |   48.14815|
-| 5R4E        | C21     |   48.14815|
-| 5R4E        | C22     |   77.77778|
-| 5R4E        | C23     |   51.85185|
-| 5R4E        | C24     |   66.66667|
-| 5R4E        | C25     |   55.55556|
-| 5R4E        | C26     |   66.66667|
-| 5R4E        | C27     |   59.25926|
-
-``` r
-rate.eln <- group_by(mean.rate.v4.kids, condition.y, subject, corr.det.cat) %>%
-  summarise(mean.corr = mean(pcntcorr)) %>% 
-  select(condition.y, subject, corr.det.cat, mean.corr) %>%
-  spread(corr.det.cat, mean.corr) %>%
-  filter(e > 62 | R > 62) 
-
-# rate.eln$corr.det.cat <- factor(rate.eln$corr.det.cat, levels = c("R", "e")) 
-
-
-
-
-rate.eln %>% as.data.frame %>% kable
-```
-
-| condition.y | subject |         e|          R|
-|:------------|:--------|---------:|----------:|
-| 3R6E        | C14     |  77.77778|   44.44444|
-| 3R6E        | C15     |  66.66667|   66.66667|
-| 3R6E        | C16     |  61.11111|   66.66667|
-| 3R6E        | C20     |  61.11111|   66.66667|
-| 5R4E        | C17     |  50.00000|   93.33333|
-| 5R4E        | C18     |  33.33333|  100.00000|
-| 5R4E        | C19     |  75.00000|   26.66667|
-| 5R4E        | C22     |  83.33333|   73.33333|
-| 5R4E        | C24     |  50.00000|   80.00000|
-| 5R4E        | C25     |  41.66667|   66.66667|
-| 5R4E        | C26     |  33.33333|   93.33333|
-
-``` r
 # ggplot(rate.eln, aes(x = corr.det.cat, y = mean.corr, fill = corr.det.cat)) +
 #   facet_wrap(condition.y ~ subject)+
 #   geom_bar(stat = "identity", position = position_dodge(), color = "black", width = 0.5)+
@@ -555,239 +439,118 @@ rate.eln %>% as.data.frame %>% kable
 ```
 
 ``` r
-prod.clean.v4 <- filter(prod.clean, exp.version == "v4")
-
-indie.TP.calc <- mutate(mean.rate.v4, known = ifelse(pcntcorr > 50.0, 1, 0)) %>%
-  group_by(age.group, language, condition.y, subject, corr.det.cat) %>%
-  summarise(n.know = sum(known)) %>% 
-  spread(corr.det.cat, n.know) %>%
-  mutate(new.n = e + R, new.TP = new.n/log(new.n), 
-         new.TP.predicts = ifelse(e < new.TP, "Rule", "No rule")) 
-
-prod.clean.v4.newTP <- group_by(prod.clean.v4, age.group, language, condition.y, subject, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, language, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R") %>%
-  left_join(indie.TP.calc, by = c("age.group", "language", "condition.y", "subject")) %>%
-  print
-```
-
-    ## # A tibble: 17 × 13
-    ##    age.group language condition.y subject n.correct.nouns categoryDet
-    ##        <chr>    <chr>       <chr>   <chr>           <int>      <fctr>
-    ## 1      child        A        5R4E     C17              12           R
-    ## 2      child        A        5R4E     C18              12           R
-    ## 3      child        A        5R4E     C22              12           R
-    ## 4      child        A        5R4E     C24              12           R
-    ## 5      child        A        5R4E     C26              10           R
-    ## 6      child        A        3R6E     C20              12           R
-    ## 7      child        B        5R4E     C19              10           R
-    ## 8      child        B        5R4E     C23              12           R
-    ## 9      child        B        5R4E     C25              12           R
-    ## 10     child        B        5R4E     C27               8           R
-    ## 11     child        B        3R6E     C13              12           R
-    ## 12     child        B        3R6E     C14              12           R
-    ## 13     child        B        3R6E     C15               9           R
-    ## 14     child        B        3R6E     C16              11           R
-    ## 15     adult        A        5R4E     S11              12           R
-    ## 16     adult        A        3R6E     S12              12           R
-    ## 17     adult        B        3R6E     S13              12           R
-    ## # ... with 7 more variables: count <dbl>, pcntusage <dbl>, e <dbl>,
-    ## #   R <dbl>, new.n <dbl>, new.TP <dbl>, new.TP.predicts <chr>
-
-``` r
-# reorder levels of factors into the order we want
-prod.clean.v4.newTP$age.group <- factor(prod.clean.v4.newTP$age.group, levels = c("child", "adult"))
-prod.clean.v4.newTP$condition.y <- factor(prod.clean.v4.newTP$condition.y, levels = c("5R4E", "3R6E"))
-prod.clean.v4.newTP$new.TP.predicts <- factor(prod.clean.v4.newTP$new.TP.predicts, levels = c("Rule", "No rule"))
-
-prod.clean.v4.newTP %>% as.data.frame %>% kable
-```
-
-| age.group | language | condition.y | subject |  n.correct.nouns| categoryDet |  count|  pcntusage|    e|    R|  new.n|    new.TP| new.TP.predicts |
-|:----------|:---------|:------------|:--------|----------------:|:------------|------:|----------:|----:|----:|------:|---------:|:----------------|
-| child     | A        | 5R4E        | C17     |               12| R           |     12|  100.00000|    3|    5|      8|  3.847187| Rule            |
-| child     | A        | 5R4E        | C18     |               12| R           |     12|  100.00000|    2|    5|      7|  3.597288| Rule            |
-| child     | A        | 5R4E        | C22     |               12| R           |      0|    0.00000|    4|    4|      8|  3.847187| No rule         |
-| child     | A        | 5R4E        | C24     |               12| R           |     12|  100.00000|    2|    5|      7|  3.597288| Rule            |
-| child     | A        | 5R4E        | C26     |               10| R           |     10|  100.00000|    1|    5|      6|  3.348664| Rule            |
-| child     | A        | 3R6E        | C20     |               12| R           |      6|   50.00000|    4|    3|      7|  3.597288| No rule         |
-| child     | B        | 5R4E        | C19     |               10| R           |      1|   10.00000|    4|    1|      5|  3.106675| No rule         |
-| child     | B        | 5R4E        | C23     |               12| R           |      0|    0.00000|    2|    3|      5|  3.106675| Rule            |
-| child     | B        | 5R4E        | C25     |               12| R           |      6|   50.00000|    2|    4|      6|  3.348664| Rule            |
-| child     | B        | 5R4E        | C27     |                8| R           |      0|    0.00000|    2|    4|      6|  3.348664| Rule            |
-| child     | B        | 3R6E        | C13     |               12| R           |      0|    0.00000|    4|    2|      6|  3.348664| No rule         |
-| child     | B        | 3R6E        | C14     |               12| R           |      0|    0.00000|    5|    1|      6|  3.348664| No rule         |
-| child     | B        | 3R6E        | C15     |                9| R           |      0|    0.00000|    4|    3|      7|  3.597288| No rule         |
-| child     | B        | 3R6E        | C16     |               11| R           |      0|    0.00000|    4|    3|      7|  3.597288| No rule         |
-| adult     | A        | 5R4E        | S11     |               12| R           |     10|   83.33333|    3|    5|      8|  3.847187| Rule            |
-| adult     | A        | 3R6E        | S12     |               12| R           |      7|   58.33333|    6|    3|      9|  4.096076| No rule         |
-| adult     | B        | 3R6E        | S13     |               12| R           |      8|   66.66667|    4|    1|      5|  3.106675| No rule         |
-
-``` r
-ggplot(prod.clean.v4.newTP, aes(x = new.TP.predicts, y = pcntusage)) +
-  facet_grid(. ~ age.group) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-10-1.png)
-
-``` r
-prod.clean.v4.newTP <- mutate(prod.clean.v4.newTP, exp.name = "Experiment 2") %>%
-  filter(subject %in% c("C14", "C15","C16", "C20", "C17", "C18", "C19", "C22", "C24","C25", "C26"))
-```
-
-``` r
-ggplot(filter(prod.clean.v4.newTP, age.group =="child"), aes(x = new.TP.predicts, y = pcntusage)) +
-  facet_grid(. ~ exp.name) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 6, fill = "lightskyblue") +
-  # stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form") 
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-11-1.png)
-
-``` r
-ggsave('/Users/kathrynschuler/Desktop/pentalk-5.png', width=6, height=4)
-```
-
-``` r
-ggplot(prod.clean.v4.newTP, aes(x = condition.y, y = pcntusage)) +
-  facet_grid(. ~ age.group) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form") 
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-12-1.png)
-
-``` r
-prod.clean.v4.newTP %>%
-  select(age.group, language, condition.y, subject, e, R, new.n, new.TP, new.TP.predicts, pcntusage) %>%
-  as.data.frame %>% kable
-```
-
-| age.group | language | condition.y | subject |    e|    R|  new.n|    new.TP| new.TP.predicts |  pcntusage|
-|:----------|:---------|:------------|:--------|----:|----:|------:|---------:|:----------------|----------:|
-| child     | A        | 5R4E        | C17     |    3|    5|      8|  3.847187| Rule            |        100|
-| child     | A        | 5R4E        | C18     |    2|    5|      7|  3.597288| Rule            |        100|
-| child     | A        | 5R4E        | C22     |    4|    4|      8|  3.847187| No rule         |          0|
-| child     | A        | 5R4E        | C24     |    2|    5|      7|  3.597288| Rule            |        100|
-| child     | A        | 5R4E        | C26     |    1|    5|      6|  3.348664| Rule            |        100|
-| child     | A        | 3R6E        | C20     |    4|    3|      7|  3.597288| No rule         |         50|
-| child     | B        | 5R4E        | C19     |    4|    1|      5|  3.106675| No rule         |         10|
-| child     | B        | 5R4E        | C25     |    2|    4|      6|  3.348664| Rule            |         50|
-| child     | B        | 3R6E        | C14     |    5|    1|      6|  3.348664| No rule         |          0|
-| child     | B        | 3R6E        | C15     |    4|    3|      7|  3.597288| No rule         |          0|
-| child     | B        | 3R6E        | C16     |    4|    3|      7|  3.597288| No rule         |          0|
-
-``` r
-newTP.prop.correct <- mutate(prod.clean.v4.newTP, personalTP = ifelse(new.TP.predicts == "Rule",
-                                                         ifelse(pcntusage > 75.0, 1, 0), ifelse(pcntusage < 25.0, 1, 0))) %>%
-  mutate(groupTP = ifelse(condition.y == "5R4E", ifelse(pcntusage > 75.0, 1, 0), ifelse(pcntusage < 25.0, 1, 0))) %>%
-  group_by(age.group, condition.y) %>%
-  summarise(count = n(), acc.personalTP = sum(personalTP)/count *100, acc.groupTP = sum(groupTP)/count*100) %>% print
-```
-
-    ## Source: local data frame [2 x 5]
-    ## Groups: age.group [?]
-    ## 
-    ##   age.group condition.y count acc.personalTP acc.groupTP
-    ##      <fctr>      <fctr> <int>          <dbl>       <dbl>
-    ## 1     child        5R4E     7       85.71429    57.14286
-    ## 2     child        3R6E     4       75.00000    75.00000
-
-``` r
-# newTP.prop.eln <- (prod.clean.v4.newTP)
-#   group_by(condition.y, subject) %>%
+# prod.clean.v4 <- filter(prod.clean, exp.version == "v4")
+# 
+# indie.TP.calc <- mutate(mean.rate.v4, known = ifelse(pcntcorr > 50.0, 1, 0)) %>%
+#   group_by(age.group, language, condition.y, subject, corr.det.cat) %>%
+#   summarise(n.know = sum(known)) %>% 
+#   spread(corr.det.cat, n.know) %>%
+#   mutate(new.n = e + R, new.TP = new.n/log(new.n), 
+#          new.TP.predicts = ifelse(e < new.TP, "Rule", "No rule")) 
+# 
+# prod.clean.v4.newTP <- group_by(prod.clean.v4, age.group, language, condition.y, subject, categoryDet, n.correct.nouns) %>%
+#   summarise(count = n()) %>%
+#   as.data.frame %>%
+#   complete(nesting(age.group, language, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
+#   mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R") %>%
+#   left_join(indie.TP.calc, by = c("age.group", "language", "condition.y", "subject")) %>%
+#   print
+# 
+# # reorder levels of factors into the order we want
+# prod.clean.v4.newTP$age.group <- factor(prod.clean.v4.newTP$age.group, levels = c("child", "adult"))
+# prod.clean.v4.newTP$condition.y <- factor(prod.clean.v4.newTP$condition.y, levels = c("5R4E", "3R6E"))
+# prod.clean.v4.newTP$new.TP.predicts <- factor(prod.clean.v4.newTP$new.TP.predicts, levels = c("Rule", "No rule"))
+# 
+# prod.clean.v4.newTP %>% as.data.frame %>% kable
+# 
+# ggplot(prod.clean.v4.newTP, aes(x = new.TP.predicts, y = pcntusage)) +
+#   facet_grid(. ~ age.group) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form")
+# prod.clean.v4.newTP <- mutate(prod.clean.v4.newTP, exp.name = "Experiment 2") %>%
+#   filter(subject %in% c("C14", "C15","C16", "C20", "C17", "C18", "C19", "C22", "C24","C25", "C26"))
+# 
+# ```
+# 
+# ```{r fig.height = 4, fig.width = 3}
+# ggplot(filter(prod.clean.v4.newTP, age.group =="child"), aes(x = new.TP.predicts, y = pcntusage)) +
+#   facet_grid(. ~ exp.name) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 6, fill = "lightskyblue") +
+#   # stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form") 
+# ggsave('/Users/kathrynschuler/Desktop/pentalk-5.png', width=6, height=4)
+# ```
+# 
+# ```{r}
+# 
+# ggplot(prod.clean.v4.newTP, aes(x = condition.y, y = pcntusage)) +
+#   facet_grid(. ~ age.group) +
+#   geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 4, fill = "lightskyblue") +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form") 
+# 
+# 
+# prod.clean.v4.newTP %>%
+#   select(age.group, language, condition.y, subject, e, R, new.n, new.TP, new.TP.predicts, pcntusage) %>%
+#   as.data.frame %>% kable
+# 
+# newTP.prop.correct <- mutate(prod.clean.v4.newTP, personalTP = ifelse(new.TP.predicts == "Rule",
+#                                                          ifelse(pcntusage > 75.0, 1, 0), ifelse(pcntusage < 25.0, 1, 0))) %>%
+#   mutate(groupTP = ifelse(condition.y == "5R4E", ifelse(pcntusage > 75.0, 1, 0), ifelse(pcntusage < 25.0, 1, 0))) %>%
+#   group_by(age.group, condition.y) %>%
 #   summarise(count = n(), acc.personalTP = sum(personalTP)/count *100, acc.groupTP = sum(groupTP)/count*100) %>% print
 # 
-
-
-
-
-acc.plot.data <- filter(newTP.prop.correct, age.group == "child") %>%
-  gather(whichTP, accuracy, acc.personalTP:acc.groupTP) %>% print
+# 
+# # newTP.prop.eln <- (prod.clean.v4.newTP)
+# #   group_by(condition.y, subject) %>%
+# #   summarise(count = n(), acc.personalTP = sum(personalTP)/count *100, acc.groupTP = sum(groupTP)/count*100) %>% print
+# # 
+# 
+# 
+# 
+# 
+# acc.plot.data <- filter(newTP.prop.correct, age.group == "child") %>%
+#   gather(whichTP, accuracy, acc.personalTP:acc.groupTP) %>% print
+# 
+# acc.plot.data$whichTP <- factor(acc.plot.data$whichTP, labels = c("9/ln(9)", "Personal TP"))
+# ggplot(acc.plot.data, aes(x = whichTP, y = accuracy, fill = whichTP)) +
+#   facet_grid(.~condition.y)+
+#    geom_bar(stat= "identity", position = position_dodge(), color = "black", width = .50) +
+# 
+#   theme(legend.position = "none") +
+#   coord_cartesian(ylim = c(0, 100)) +
+#   ylab("Prediction accuracy")+
+#   xlab("")
+# 
+# # get the percent usages by subject by age.group by condition by category (maj/min)
+# indie.marker.usage <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
+#   summarise(count = n()) %>%
+#   as.data.frame %>%
+#   complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
+#   mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
+# 
+# ggkid <- filter(indie.marker.usage, age.group == "child")
+# 
+# ggplot(ggkid, aes(x = condition.y, y = pcntusage)) +
+#   geom_rect(xmin = -Inf, xmax = Inf, ymin = 85, ymax = Inf, colour = "darkseagreen1", fill ="darkseagreen1")+
+#   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 15, colour = "pink1", fill ="pink1" )+
+# 
+#   geom_bar(stat= "identity", position = position_dodge(), color = "black") +
+#   #stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
+#   coord_cartesian(ylim = c(0, 101)) +
+#   xlab("") +
+#   ylab("Usage of regular form") 
 ```
-
-    ## Source: local data frame [4 x 5]
-    ## Groups: age.group [1]
-    ## 
-    ##   age.group condition.y count        whichTP accuracy
-    ##      <fctr>      <fctr> <int>          <chr>    <dbl>
-    ## 1     child        5R4E     7 acc.personalTP 85.71429
-    ## 2     child        3R6E     4 acc.personalTP 75.00000
-    ## 3     child        5R4E     7    acc.groupTP 57.14286
-    ## 4     child        3R6E     4    acc.groupTP 75.00000
-
-``` r
-acc.plot.data$whichTP <- factor(acc.plot.data$whichTP, labels = c("9/ln(9)", "Personal TP"))
-ggplot(acc.plot.data, aes(x = whichTP, y = accuracy, fill = whichTP)) +
-  facet_grid(.~condition.y)+
-   geom_bar(stat= "identity", position = position_dodge(), color = "black", width = .50) +
-
-  theme(legend.position = "none") +
-  coord_cartesian(ylim = c(0, 100)) +
-  ylab("Prediction accuracy")+
-  xlab("")
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-12-2.png)
-
-``` r
-# get the percent usages by subject by age.group by condition by category (maj/min)
-indie.marker.usage <- group_by(prod.clean, subject, condition.y, age.group, categoryDet, n.correct.nouns) %>%
-  summarise(count = n()) %>%
-  as.data.frame %>%
-  complete(nesting(age.group, condition.y, subject, n.correct.nouns), categoryDet, fill = list(count = 0)) %>%
-  mutate(pcntusage = count/n.correct.nouns *100) %>% filter(categoryDet == "R")
-
-ggkid <- filter(indie.marker.usage, age.group == "child")
-
-ggplot(ggkid, aes(x = condition.y, y = pcntusage)) +
-  geom_rect(xmin = -Inf, xmax = Inf, ymin = 85, ymax = Inf, colour = "darkseagreen1", fill ="darkseagreen1")+
-  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 15, colour = "pink1", fill ="pink1" )+
-
-  geom_bar(stat= "identity", position = position_dodge(), color = "black") +
-  #stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
-  coord_cartesian(ylim = c(0, 101)) +
-  xlab("") +
-  ylab("Usage of regular form") 
-```
-
-![](0164-FINAL-ANALYSIS_files/figure-markdown_github/unnamed-chunk-12-3.png)
 
 ``` r
 #install.packages("permute", repos='http://cran.us.r-project.org')
-library(permute)
-# take prod.clean.v4.newTP$pcntusage and shuffle it
-sample(prod.clean.v4.newTP$pcntusage)
+# library(permute)
+# # take prod.clean.v4.newTP$pcntusage and shuffle it
+# sample(prod.clean.v4.newTP$pcntusage)
+# print(select(prod.clean.v4.newTP, age.group, condition.y, subject, pcntusage, new.TP.predicts))
 ```
-
-    ##  [1] 100  10   0   0   0   0 100 100  50 100  50
-
-``` r
-print(select(prod.clean.v4.newTP, age.group, condition.y, subject, pcntusage, new.TP.predicts))
-```
-
-    ## # A tibble: 11 × 5
-    ##    age.group condition.y subject pcntusage new.TP.predicts
-    ##       <fctr>      <fctr>   <chr>     <dbl>          <fctr>
-    ## 1      child        5R4E     C17       100            Rule
-    ## 2      child        5R4E     C18       100            Rule
-    ## 3      child        5R4E     C22         0         No rule
-    ## 4      child        5R4E     C24       100            Rule
-    ## 5      child        5R4E     C26       100            Rule
-    ## 6      child        3R6E     C20        50         No rule
-    ## 7      child        5R4E     C19        10         No rule
-    ## 8      child        5R4E     C25        50            Rule
-    ## 9      child        3R6E     C14         0         No rule
-    ## 10     child        3R6E     C15         0         No rule
-    ## 11     child        3R6E     C16         0         No rule
