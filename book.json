@@ -1,6 +1,8 @@
 {
     "plugins": ["collapsible-chapters", "packt-fontsettings"],
     "pluginsConfig": {
-        "fontsettings": {}
+        "fontsettings": {
+            "family": "sans",
+            "size": 2 }
     }
 }
