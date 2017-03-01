@@ -3,6 +3,9 @@
 This is an index of all of the experiments I have run in graduate school.  I keep a single summary file in the form of an iPython or R notebook for each experiment.  Click on an experiment to view its summary.  For more details on how I run experiments and document my work visit my [experiment guide](https://guide.kathrynschuler.com).
 
 1. [QAXBR](#qaxbr)
+    - Variable word frequency (Raggedyness)
+    - Children (kid QAXBR)
+    - Older adults (65+)
 2. [Word Segmentation](#wordsegmentation)
 3. [SRT](#srt)
 4. [Empirical Yang](#empiricalyang)
