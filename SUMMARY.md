@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [QAXBR](qaxbr/README.md)
-    * [QAXBR Raggedyness]
+    * [QAXBR Raggedyness](qaxbr/qaxbr-raggedyness/README.md)
     * [QAXBR Kid]
     * [QAXBR Older Adults]
 * [Word Segmentation](word-seg/README.md)
