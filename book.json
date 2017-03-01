@@ -1,5 +1,7 @@
 {
-    "plugins": ["collapsible-chapters"],
+    "plugins": ["collapsible-chapters", "packt-fonsettings"],
+}
+{
     "pluginsConfig": {
         "fontsettings": {
             "theme": 'white', 
