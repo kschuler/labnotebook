@@ -19,6 +19,7 @@
 * [Empirical Yang](empirical-yang/README.md)
   * [REFINING PARADIGM](empirical-yang/refining-paradigm/README.md)
   * [KIDS v. ADULTS](empirical-yang/kids-v-adults/README.md)
+    * [0164-empiricalyang-9noun-mfrule-tophalf-child](empirical-yang/kids-v-adults/0164-FINAL-ANALYSIS.md)
   * [ADULT COMPLEX LANGUAGE](empirical-yang/adult-complex-language/README.md)
 * [Incon Input](incon-input/README.md)
 * [Hierarchical structure](hierarchical-structure.md)
