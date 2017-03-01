@@ -2,10 +2,10 @@
 
 * [Introduction](README.md)
 * [QAXBR](qaxbr/README.md)
-    * QAXBR Raggedyness
+    * Raggedyness
         * [0164](qaxbr/qaxbr-raggedyness/README.md)
-    * [QAXBR Kid]()
-    * [QAXBR Older Adults]()
+    * [Kid]()
+    * [Older Adults]()
 * [Word Segmentation](word-seg/README.md)
 * [SRT](SRT/README.md)
 * [Empirical Yang](empirical-yang/README.md)
